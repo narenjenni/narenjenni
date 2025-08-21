@@ -10,7 +10,7 @@ export default async function handler(req, res){
     return res.status(400).json({ ok:false, error:'Data tidak lengkap' });
   }
   try{
-    const resend = new Resend(process.env.re_M6uYBAZU_7Bjg7AmxJjc6na7opBW5pHK8);
+    const resend = new Resend(re_M6uYBAZU_7Bjg7AmxJjc6na7opBW5pHK8);
     const to = 'narenskii@gmail.com';
     const html = `
       <h2>Pesan Kontak Website</h2>
