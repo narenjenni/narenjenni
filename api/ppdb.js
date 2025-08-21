@@ -12,7 +12,7 @@ export default async function handler(req, res){
   }
   try{
     const resend = new Resend(process.env.re_AEp1AVvw_FsxdK6pLYks564cSg7GKv2bw);
-    const from = process.env.FROM_EMAIL || 'noreply@yourdomain.com';
+    const from = process.env.FROM_EMAIL || 'narenskii@gmail.com';
 
     // Email ke admin
     const adminHtml = `
