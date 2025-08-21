@@ -1,0 +1,13 @@
+{
+  "name": "smk-perintis-1-depok",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static build'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "resend": "^4.0.0"
+  }
+}
