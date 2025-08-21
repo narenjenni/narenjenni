@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PPDB — SMK Perintis 1 Depok</title>
+  <meta name="description" content="Formulir Pendaftaran Peserta Didik Baru (PPDB) SMK Perintis 1 Depok." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="/favicon.svg">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <img src="/logo.svg" alt="Logo SMK Perintis 1 Depok" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-top">SMK Perintis 1 Depok</span>
+          <span class="brand-bottom">Formulir PPDB</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <ul class="nav-menu nav-menu--inline">
+          <li><a href="/">Beranda</a></li>
+          <li><a href="/#jurusan">Jurusan</a></li>
+          <li><a href="/#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="aos" data-aos="fade-up">Pendaftaran Peserta Didik Baru (PPDB)</h1>
+      <p class="lead aos" data-aos="fade-up">Isi data dengan lengkap dan benar. Bukti pendaftaran akan dikirim ke email Anda.</p>
+
+      <form id="ppdbForm" class="form card aos" data-aos="fade-up">
+        <fieldset class="fieldset">
+          <legend>Data Calon Siswa</legend>
+          <div class="grid-2">
+            <label>Nama Lengkap
+              <input type="text" name="nama" required placeholder="Nama lengkap sesuai ijazah">
+            </label>
+            <label>NIK
+              <input type="text" name="nik" required minlength="12" maxlength="16" placeholder="Nomor Induk Kependudukan">
+            </label>
+            <label>Tempat Lahir
+              <input type="text" name="tempat_lahir" required>
+            </label>
+            <label>Tanggal Lahir
+              <input type="date" name="tanggal_lahir" required>
+            </label>
+            <label>Jenis Kelamin
+              <select name="jenis_kelamin" required>
+                <option value="">Pilih...</option>
+                <option>Laki-laki</option>
+                <option>Perempuan</option>
+              </select>
+            </label>
+            <label>Asal Sekolah
+              <input type="text" name="asal_sekolah" required>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="fieldset">
+          <legend>Pilihan Jurusan</legend>
+          <div class="grid-3">
+            <label><input type="radio" name="jurusan" value="Bisnis Daring & Pemasaran" required> Bisnis Daring & Pemasaran</label>
+            <label><input type="radio" name="jurusan" value="Otomatisasi & Tata Kelola Perkantoran"> Otomatisasi & Tata Kelola Perkantoran</label>
+            <label><input type="radio" name="jurusan" value="Akuntansi & Keuangan Lembaga"> Akuntansi & Keuangan Lembaga</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="fieldset">
+          <legend>Kontak</legend>
+          <div class="grid-2">
+            <label>Email
+              <input type="email" name="email" required placeholder="email@contoh.com">
+            </label>
+            <label>No. HP (WhatsApp)
+              <input type="tel" name="hp" required placeholder="08xxxx">
+            </label>
+            <label>Alamat Lengkap
+              <textarea name="alamat" rows="3" required></textarea>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button class="btn" type="submit">Kirim Pendaftaran</button>
+          <p id="ppdbStatus" class="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <span>&copy; <span id="year"></span> SMK Perintis 1 Depok</span>
+    </div>
+  </footer>
+
+  <script src="/script.js" defer></script>
+</body>
+</html>
