@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PPDB - SMK Perintis 1 Depok</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="assets/js/ppdb.js"></script>
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">SMK Perintis 1 Depok</a>
+      <nav class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="jurusan.html">Jurusan</a>
+        <a href="berita.html">Berita</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="ppdb.html" class="active btn-primary">PPDB</a>
+        <a href="kontak.html">Kontak</a>
+      </nav>
+      <button class="mobile-menu-toggle">☰</button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Pendaftaran Peserta Didik Baru (PPDB)</h1>
+      <p>Daftarkan diri Anda untuk bergabung bersama SMK Perintis 1 Depok</p>
+    </div>
+  </section>
+
+  <section class="container ppdb-form">
+    <form id="ppdbForm">
+      <label>Nama Lengkap</label>
+      <input type="text" name="nama" required>
+
+      <label>Email</label>
+      <input type="email" name="email" required>
+
+      <label>No. Telepon</label>
+      <input type="text" name="telepon" required>
+
+      <label>Jurusan Pilihan</label>
+      <select name="jurusan" required>
+        <option value="">-- Pilih Jurusan --</option>
+        <option value="Bisnis Daring & Pemasaran">Bisnis Daring & Pemasaran</option>
+        <option value="Otomatisasi & Tata Kelola Perkantoran">Otomatisasi & Tata Kelola Perkantoran</option>
+        <option value="Akuntansi & Keuangan Lembaga">Akuntansi & Keuangan Lembaga</option>
+      </select>
+
+      <label>Alamat Lengkap</label>
+      <textarea name="alamat" required></textarea>
+
+      <button type="submit" class="btn-primary">Kirim Pendaftaran</button>
+      <p id="ppdbMessage"></p>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2025 SMK Perintis 1 Depok</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/official_smkperintis1depok" target="_blank">Instagram</a>
+        <a href="https://youtube.com/@docsmkperintis1depok" target="_blank">YouTube</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
