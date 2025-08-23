@@ -27,33 +27,27 @@
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
   <h1 class="text-3xl md:text-4xl font-extrabold">Agenda & Kalender</h1>
   <p class="mt-2 text-slate-600">Jadwal kegiatan akademik, penerimaan, ujian, dan event sekolah.</p>
-
   <div class="mt-6 overflow-x-auto">
     <table class="min-w-full border bg-white rounded-2xl overflow-hidden">
       <thead class="bg-slate-100">
-        <tr>
-          <th class="text-left px-4 py-3">Tanggal</th>
-          <th class="text-left px-4 py-3">Kegiatan</th>
-          <th class="text-left px-4 py-3">Lokasi</th>
-        </tr>
+        <tr><th class="text-left px-4 py-3">Tanggal</th><th class="text-left px-4 py-3">Kegiatan</th><th class="text-left px-4 py-3">Lokasi</th></tr>
       </thead>
-      <tbody id="agendaRows" class="divide-y"></tbody>
+      <tbody id="rows" class="divide-y"></tbody>
     </table>
   </div>
 </section>
 <script>
-const agenda = [
+const agenda=[
   {date:"2025-08-30", title:"Penutupan Gelombang PPDB", loc:"Online"},
   {date:"2025-09-05", title:"Masa Pengenalan Lingkungan Sekolah (MPLS)", loc:"Aula"},
-  {date:"2025-10-10", title:"Ujian Tengah Semester Ganjil", loc:"Kelas"},
+  {date:"2025-10-10", title:"Ujian Tengah Semester Ganjil", loc:"Kelas"}
 ];
-document.getElementById("agendaRows").innerHTML = agenda.map(a => `
-  <tr>
-    <td class="px-4 py-3">${new Date(a.date).toLocaleDateString('id-ID')}</td>
-    <td class="px-4 py-3 font-medium">${a.title}</td>
-    <td class="px-4 py-3">${a.loc}</td>
-  </tr>
-`).join("");
+document.getElementById('rows').innerHTML=agenda.map(a=>`
+<tr>
+  <td class="px-4 py-3">${new Date(a.date).toLocaleDateString('id-ID')}</td>
+  <td class="px-4 py-3 font-medium">${a.title}</td>
+  <td class="px-4 py-3">${a.loc}</td>
+</tr>`).join('');
 </script>
 
 </body>

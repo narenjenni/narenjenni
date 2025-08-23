@@ -30,13 +30,12 @@
   <div id="news" class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 </section>
 <script>
-const news = [
+const news=[
   {title:"Juara 1 Lomba Marketing", date:"2025-08-10", excerpt:"Tim BDP meraih juara 1 kompetisi marketing tingkat kota.", cover:"https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?q=80&w=1200&auto=format&fit=crop"},
   {title:"Workshop Administrasi Modern", date:"2025-08-05", excerpt:"Jurusan OTKP adakan workshop digital office tools.", cover:"https://images.unsplash.com/photo-1584697964199-3aadf5d0c1f2?q=80&w=1200&auto=format&fit=crop"},
   {title:"Kunjungan Industri Keuangan", date:"2025-07-29", excerpt:"AKL melakukan kunjungan ke perusahaan fintech.", cover:"https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1200&auto=format&fit=crop"}
 ];
-const wrap = document.getElementById('news');
-wrap.innerHTML = news.map(n=>`
+document.getElementById('news').innerHTML=news.map(n=>`
   <article class="rounded-2xl overflow-hidden border bg-white shadow-sm hover:shadow-xl transition">
     <img src="${n.cover}" alt="" class="aspect-[16/9] w-full object-cover"/>
     <div class="p-5">

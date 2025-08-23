@@ -27,7 +27,6 @@
 <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
   <h1 class="text-3xl md:text-4xl font-extrabold">Formulir PPDB</h1>
   <p class="mt-2 text-slate-600">Isi data dengan benar. Anda dapat menambahkan berkas pendukung (rapor/sertifikat) PDF/JPG/PNG maksimum 3 file.</p>
-
   <form id="ppdbFilesForm" class="mt-6 rounded-2xl border bg-white p-6 shadow-sm space-y-4">
     <div class="grid md:grid-cols-2 gap-4">
       <input name="namaLengkap" placeholder="Nama Lengkap" required class="rounded-xl border px-3 py-2">
@@ -45,7 +44,6 @@
     </select>
     <textarea name="pesan" rows="4" placeholder="Pesan/Motivasi" class="w-full rounded-xl border px-3 py-2"></textarea>
     <input type="file" name="berkas" accept=".pdf,image/jpeg,image/png" multiple class="w-full rounded-xl border px-3 py-2"/>
-
     <div id="alert" class="hidden text-sm rounded-xl border p-3"></div>
     <div class="flex gap-3">
       <button class="rounded-xl bg-primary px-5 py-3 text-white font-semibold" type="submit">Kirim Pendaftaran</button>
@@ -54,30 +52,9 @@
   </form>
 </section>
 <script>
-const form = document.getElementById('ppdbFilesForm');
-const alertBox = document.getElementById('alert');
-function showAlert(msg, ok=true) { 
-  alertBox.classList.remove('hidden'); 
-  alertBox.classList.toggle('bg-green-50', ok);
-  alertBox.classList.toggle('border-green-200', ok);
-  alertBox.classList.toggle('text-green-700', ok);
-  alertBox.classList.toggle('bg-red-50', !ok);
-  alertBox.classList.toggle('border-red-200', !ok);
-  alertBox.classList.toggle('text-red-700', !ok);
-  alertBox.textContent = msg; 
-}
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const fd = new FormData(form);
-  const tel = String(fd.get('telepon')||'');
-  if (!/^\+?\d{9,15}$/.test(tel)) { showAlert('Nomor telepon/WA tidak valid', false); return; }
-  try { 
-    const res = await fetch('/api/ppdb-with-files', { method:'POST', body: fd });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data?.message || 'Gagal mengirim.');
-    showAlert('Pendaftaran + berkas terkirim.'); form.reset();
-  } catch(err) { showAlert(err.message, false); }
-});
+const form=document.getElementById('ppdbFilesForm');const alertBox=document.getElementById('alert');
+function showAlert(msg,ok=true){alertBox.classList.remove('hidden');alertBox.classList.toggle('bg-green-50',ok);alertBox.classList.toggle('border-green-200',ok);alertBox.classList.toggle('text-green-700',ok);alertBox.classList.toggle('bg-red-50',!ok);alertBox.classList.toggle('border-red-200',!ok);alertBox.classList.toggle('text-red-700',!ok);alertBox.textContent=msg;}
+form.addEventListener('submit',async(e)=>{e.preventDefault();const fd=new FormData(form);const tel=String(fd.get('telepon')||'');if(!/^\+?\d{9,15}$/.test(tel)){showAlert('Nomor telepon/WA tidak valid',false);return;}try{const res=await fetch('/api/ppdb-with-files',{method:'POST',body:fd});const data=await res.json();if(!res.ok)throw new Error(data?.message||'Gagal mengirim.');showAlert('Pendaftaran + berkas terkirim.');form.reset();}catch(err){showAlert(err.message,false);}});
 </script>
 
 </body>
