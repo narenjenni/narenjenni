@@ -1,33 +1,61 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>PPDB — SMK Perintis 1 Depok</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','system-ui']},colors:{primary:'#1E3A8A'}}}}</script>
+  <meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
+        colors: { primary: '#1E3A8A', accent: '#F59E0B' },
+        keyframes: {
+          float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } },
+          fadeInUp: { '0%':{opacity:0, transform:'translateY(12px)'}, '100%':{opacity:1, transform:'translateY(0)'} }
+        },
+        animation: { float:'float 7s ease-in-out infinite', fadeInUp:'fadeInUp .7s ease both' },
+        boxShadow: { glow:'0 12px 36px rgba(30,58,138,.25)' }
+      }
+    }
+  }
+</script>
+<style>
+  .ripple{position:relative;overflow:hidden}
+  .ripple:after{content:'';position:absolute;inset:0;background:radial-gradient(circle,rgba(255,255,255,.35) 10%,transparent 11%) no-repeat;background-size:0 0;border-radius:inherit;transition:background-size .45s ease,opacity .6s ease;opacity:0}
+  .ripple:active:after{background-size:200% 200%;opacity:1;transition:0s}
+  .tilt{transform-style:preserve-3d;will-change:transform}
+  .tilt:hover{transform:perspective(800px) rotateX(3deg) rotateY(-3deg);transition:transform .2s ease}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+</style>
 </head>
 <body class="bg-slate-50 text-slate-800">
-<header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    <a href="/index.html" class="font-extrabold">SMK Perintis 1 Depok</a>
-    <nav class="hidden md:flex gap-6 text-sm">
-      <a href="/berita.html" class="hover:text-primary">Berita</a>
-      <a href="/agenda.html" class="hover:text-primary">Agenda</a>
-      <a href="/galeri.html" class="hover:text-primary">Galeri</a>
-      <a href="/ppdb.html" class="hover:text-primary">PPDB</a>
-      <a href="/admin.html" class="hover:text-primary">Admin</a>
-    </nav>
-  </div>
-</header>
-
-<section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-2">
+        <img src="/assets/logo.svg" class="h-8 w-8 rounded" alt="Logo"/>
+        <span class="font-extrabold">SMK Perintis 1 Depok</span>
+      </a>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="/index.html#profil" class="hover:text-primary">Profil Sekolah</a>
+        <a href="/sambutan.html" class="hover:text-primary">Sambutan</a>
+        <a href="/berita.html" class="hover:text-primary">Berita</a>
+        <a href="/agenda.html" class="hover:text-primary">Agenda</a>
+        <a href="/galeri.html" class="hover:text-primary">Galeri</a>
+        <a href="/ppdb.html" class="hover:text-primary">PPDB</a>
+      </nav>
+    </div>
+  </header>
+  
+<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
   <h1 class="text-3xl md:text-4xl font-extrabold">Formulir PPDB</h1>
-  <p class="mt-2 text-slate-600">Isi data dengan benar. Anda dapat menambahkan berkas pendukung (rapor/sertifikat) PDF/JPG/PNG maksimum 3 file.</p>
-  <form id="ppdbFilesForm" class="mt-6 rounded-2xl border bg-white p-6 shadow-sm space-y-4">
+  <p class="mt-2 text-slate-600">Isi data dengan benar. Setelah terkirim, panitia akan menghubungi Anda.</p>
+  <form id="ppdbForm" class="mt-6 rounded-2xl border bg-white p-6 shadow-sm space-y-4">
     <div class="grid md:grid-cols-2 gap-4">
       <input name="namaLengkap" placeholder="Nama Lengkap" required class="rounded-xl border px-3 py-2">
       <input name="nisn" placeholder="NISN" required class="rounded-xl border px-3 py-2">
@@ -43,18 +71,43 @@
       <option>Akuntansi dan Keuangan Lembaga</option>
     </select>
     <textarea name="pesan" rows="4" placeholder="Pesan/Motivasi" class="w-full rounded-xl border px-3 py-2"></textarea>
-    <input type="file" name="berkas" accept=".pdf,image/jpeg,image/png" multiple class="w-full rounded-xl border px-3 py-2"/>
     <div id="alert" class="hidden text-sm rounded-xl border p-3"></div>
     <div class="flex gap-3">
-      <button class="rounded-xl bg-primary px-5 py-3 text-white font-semibold" type="submit">Kirim Pendaftaran</button>
-      <a href="/index.html#ppdb" class="rounded-xl border px-5 py-3 font-semibold">Kembali</a>
+      <button class="ripple rounded-xl bg-primary px-5 py-3 text-white font-semibold active:scale-95" type="submit">Kirim Pendaftaran</button>
+      <a href="/index.html#jurusan" class="rounded-xl border px-5 py-3 font-semibold">Kembali</a>
     </div>
   </form>
-</section>
+</main>
 <script>
-const form=document.getElementById('ppdbFilesForm');const alertBox=document.getElementById('alert');
-function showAlert(msg,ok=true){alertBox.classList.remove('hidden');alertBox.classList.toggle('bg-green-50',ok);alertBox.classList.toggle('border-green-200',ok);alertBox.classList.toggle('text-green-700',ok);alertBox.classList.toggle('bg-red-50',!ok);alertBox.classList.toggle('border-red-200',!ok);alertBox.classList.toggle('text-red-700',!ok);alertBox.textContent=msg;}
-form.addEventListener('submit',async(e)=>{e.preventDefault();const fd=new FormData(form);const tel=String(fd.get('telepon')||'');if(!/^\+?\d{9,15}$/.test(tel)){showAlert('Nomor telepon/WA tidak valid',false);return;}try{const res=await fetch('/api/ppdb-with-files',{method:'POST',body:fd});const data=await res.json();if(!res.ok)throw new Error(data?.message||'Gagal mengirim.');showAlert('Pendaftaran + berkas terkirim.');form.reset();}catch(err){showAlert(err.message,false);}});
+var form=document.getElementById('ppdbForm'); var alertBox=document.getElementById('alert');
+function showAlert(msg,ok){ 
+  if(ok===undefined) ok=true;
+  alertBox.classList.remove('hidden');
+  alertBox.classList.toggle('bg-green-50',ok);
+  alertBox.classList.toggle('border-green-200',ok);
+  alertBox.classList.toggle('text-green-700',ok);
+  alertBox.classList.toggle('bg-red-50',!ok);
+  alertBox.classList.toggle('border-red-200',!ok);
+  alertBox.classList.toggle('text-red-700',!ok);
+  alertBox.textContent=msg;
+}
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+  var fd=new FormData(form);
+  var tel=String(fd.get('telepon')||'');
+  if(!/^\+?\d{9,15}$/.test(tel)){ showAlert('Nomor telepon/WA tidak valid',false); return; }
+  try {
+    var payload={};
+    fd.forEach(function(v,k){ payload[k]=v; });
+    var res=await fetch('/api/send', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+    var data=await res.json();
+    if(!res.ok) throw new Error(data && data.message ? data.message : 'Gagal mengirim.');
+    showAlert('Pendaftaran terkirim.');
+    form.reset();
+  } catch(err){
+    showAlert(err.message||'Gagal mengirim.', false);
+  }
+});
 </script>
 
 </body>
