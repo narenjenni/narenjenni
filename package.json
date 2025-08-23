@@ -1,0 +1,19 @@
+{
+  "name": "smk-perintis1depok-website",
+  "version": "1.0.0",
+  "description": "Website SMK Perintis 1 Depok - modern, elegan, responsif dengan fitur PPDB (email)",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "nodemailer": "^6.9.13",
+    "rate-limiter-flexible": "^5.0.4"
+  }
+}
