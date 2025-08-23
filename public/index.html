@@ -1,1 +1,323 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SMK Perintis 1 Depok — Sekolah Vokasi Modern</title>
+    <meta name="description" content="SMK Perintis 1 Depok. Jurusan: Bisnis Daring dan Pemasaran, Otomatisasi dan Tata Kelola Perkantoran, Akuntansi dan Keuangan Lembaga. PPDB online." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Tailwind config for custom animations
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+            colors: {
+              primary: { DEFAULT: '#1E3A8A' }, /* biru tua elegan */
+              accent: { DEFAULT: '#F59E0B' }   /* amber lembut untuk highlight */
+            },
+            keyframes: {
+              float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-6px)' } },
+              shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } }
+            },
+            animation: {
+              float: 'float 6s ease-in-out infinite',
+              shimmer: 'shimmer 2s linear infinite'
+            },
+            boxShadow: {
+              glow: '0 10px 30px rgba(30,58,138,0.25)'
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Ripple effect */
+      .ripple {
+        position: relative;
+        overflow: hidden;
+      }
+      .ripple:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle, rgba(255,255,255,.35) 10%, transparent 11%) no-repeat;
+        background-size: 0 0;
+        border-radius: inherit;
+        transition: background-size .45s ease, opacity .6s ease;
+        opacity: 0;
+      }
+      .ripple:active:after {
+        background-size: 200% 200%;
+        opacity: 1;
+        transition: 0s;
+      }
 
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        .animate-float { animation: none !important; }
+      }
+    </style>
+  </head>
+  <body class="bg-gradient-to-b from-white to-slate-50 text-slate-800 antialiased">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-40 backdrop-blur bg-white/75 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <a href="#home" class="flex items-center gap-3 group">
+            <div class="h-10 w-10 rounded-2xl bg-primary/90 text-white grid place-content-center shadow-glow group-hover:rotate-6 transition">
+              <span class="font-black">SMK</span>
+            </div>
+            <div class="leading-tight">
+              <div class="font-bold">SMK Perintis 1 Depok</div>
+              <div class="text-xs text-slate-500">Sekolah Vokasi Modern</div>
+            </div>
+          </a>
+          <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+            <a href="#home" class="hover:text-primary">Beranda</a>
+            <a href="#jurusan" class="hover:text-primary">Jurusan</a>
+            <a href="#ppdb" class="hover:text-primary">PPDB</a>
+            <a href="#lokasi" class="hover:text-primary">Lokasi</a>
+            <a href="#kontak" class="hover:text-primary">Kontak</a>
+          </nav>
+          <div class="flex items-center gap-2">
+            <button id="ppdbBtn" class="ripple inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-white font-semibold shadow-glow active:scale-95 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Z"/></svg>
+              Daftar PPDB
+            </button>
+            <button id="themeToggle" class="ripple rounded-xl border px-3 py-2 text-sm font-semibold hover:bg-slate-50 active:scale-95 transition">🌓</button>
+            <button class="md:hidden ripple p-2 rounded-lg border hover:bg-slate-50" id="mobileMenuBtn" aria-label="Buka menu">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h12M4 18h16"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden pb-3">
+          <nav class="grid gap-2 text-sm">
+            <a href="#home" class="px-2 py-2 rounded-lg hover:bg-slate-50">Beranda</a>
+            <a href="#jurusan" class="px-2 py-2 rounded-lg hover:bg-slate-50">Jurusan</a>
+            <a href="#ppdb" class="px-2 py-2 rounded-lg hover:bg-slate-50">PPDB</a>
+            <a href="#lokasi" class="px-2 py-2 rounded-lg hover:bg-slate-50">Lokasi</a>
+            <a href="#kontak" class="px-2 py-2 rounded-lg hover:bg-slate-50">Kontak</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <span class="inline-block text-xs font-bold tracking-widest uppercase bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Sekolah Kejuruan Unggulan</span>
+            <h1 class="mt-3 text-4xl md:text-5xl font-extrabold leading-tight">
+              Siap Kerja, Siap Wirausaha, Siap Kuliah
+            </h1>
+            <p class="mt-4 text-slate-600 text-lg">SMK Perintis 1 Depok membekali siswa dengan kompetensi vokasi yang relevan industri. Bergabunglah dan kembangkan potensi terbaikmu.</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <button id="ctaPPDB" class="ripple inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-white font-semibold shadow-glow active:scale-95 transition">
+                Daftar PPDB Sekarang
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M13 5h7v7h-2V8.41l-9.29 9.3-1.42-1.42 9.3-9.29H13V5Z"/></svg>
+              </button>
+              <a href="#jurusan" class="ripple inline-flex items-center gap-2 rounded-xl border px-5 py-3 font-semibold hover:bg-slate-50 active:scale-95 transition">Lihat Jurusan</a>
+            </div>
+            <div class="mt-6 flex items-center gap-4 text-sm text-slate-500">
+              <span class="inline-flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>Pendaftaran Gelombang Aktif</span>
+              <span>Kuota terbatas</span>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="aspect-[4/3] rounded-3xl bg-gradient-to-tr from-blue-50 via-white to-blue-100 border shadow-xl overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1600&auto=format&fit=crop" alt="Siswa SMK belajar" class="w-full h-full object-cover animate-float" />
+            </div>
+            <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl px-5 py-4 shadow-lg border">
+              <div class="text-xs text-slate-500">Alamat</div>
+              <div class="font-semibold">Jl. Siliwangi No.39, Pancoran Mas, Depok</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jurusan -->
+    <section id="jurusan" class="py-16 lg:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-extrabold">Program Keahlian</h2>
+          <p class="mt-3 text-slate-600">Tiga jurusan unggulan yang siap mengantarkan karier masa depan.</p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="group rounded-2xl border bg-white p-6 shadow-sm transition hover:shadow-xl hover:-translate-y-1">
+            <div class="h-12 w-12 rounded-xl bg-primary/10 text-primary grid place-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h18v2H3V4Zm0 6h18v2H3v-2Zm0 6h12v2H3v-2Z"/></svg>
+            </div>
+            <h3 class="mt-4 text-xl font-bold">Bisnis Daring dan Pemasaran</h3>
+            <p class="mt-2 text-slate-600">Fokus pada pemasaran digital, e-commerce, periklanan, analitik, dan strategi branding modern.</p>
+            <button class="mt-4 ripple inline-flex items-center gap-2 rounded-xl border px-4 py-2 font-semibold hover:bg-slate-50 active:scale-95 transition">Kurikulum singkat</button>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="group rounded-2xl border bg-white p-6 shadow-sm transition hover:shadow-xl hover:-translate-y-1">
+            <div class="h-12 w-12 rounded-xl bg-primary/10 text-primary grid place-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 4 9v12h6v-6h4v6h6V9l-8-6Z"/></svg>
+            </div>
+            <h3 class="mt-4 text-xl font-bold">Otomatisasi dan Tata Kelola Perkantoran</h3>
+            <p class="mt-2 text-slate-600">Keterampilan administrasi modern, digital office, manajemen arsip, korespondensi, dan pelayanan prima.</p>
+            <button class="mt-4 ripple inline-flex items-center gap-2 rounded-xl border px-4 py-2 font-semibold hover:bg-slate-50 active:scale-95 transition">Kurikulum singkat</button>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="group rounded-2xl border bg-white p-6 shadow-sm transition hover:shadow-xl hover:-translate-y-1">
+            <div class="h-12 w-12 rounded-xl bg-primary/10 text-primary grid place-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4h10v2H7V4Zm-2 6h14v2H5v-2Zm4 6h6v2H9v-2Z"/></svg>
+            </div>
+            <h3 class="mt-4 text-xl font-bold">Akuntansi dan Keuangan Lembaga</h3>
+            <p class="mt-2 text-slate-600">Dasar akuntansi, perpajakan, audit, fintech, dan aplikasi akuntansi terapan.</p>
+            <button class="mt-4 ripple inline-flex items-center gap-2 rounded-xl border px-4 py-2 font-semibold hover:bg-slate-50 active:scale-95 transition">Kurikulum singkat</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PPDB -->
+    <section id="ppdb" class="py-16 lg:py-24 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-extrabold">Penerimaan Peserta Didik Baru (PPDB)</h2>
+            <p class="mt-3 text-slate-600">Isi formulir pendaftaran dengan data yang benar. Tim kami akan segera menghubungi via email/WhatsApp.</p>
+            <ul class="mt-4 space-y-2 text-slate-600">
+              <li class="flex gap-2"><span class="text-green-600">✓</span> Kirim otomatis ke email panitia</li>
+              <li class="flex gap-2"><span class="text-green-600">✓</span> Validasi isian dan feedback instan</li>
+              <li class="flex gap-2"><span class="text-green-600">✓</span> Mendukung semua perangkat</li>
+            </ul>
+          </div>
+          <div>
+            <form id="ppdbForm" class="rounded-2xl border bg-white p-6 shadow-sm space-y-4">
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="text-sm font-medium">Nama Lengkap</label>
+                  <input type="text" name="namaLengkap" class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" required />
+                </div>
+                <div>
+                  <label class="text-sm font-medium">NISN</label>
+                  <input type="text" name="nisn" class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" required />
+                </div>
+                <div>
+                  <label class="text-sm font-medium">Email</label>
+                  <input type="email" name="email" class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" required />
+                </div>
+                <div>
+                  <label class="text-sm font-medium">Telepon / WhatsApp</label>
+                  <input type="tel" name="telepon" placeholder="+62 812xxxxxxx" class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" required />
+                </div>
+              </div>
+              <div>
+                <label class="text-sm font-medium">Alamat</label>
+                <input type="text" name="alamat" class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" required />
+              </div>
+              <div>
+                <label class="text-sm font-medium">Asal Sekolah</label>
+                <input type="text" name="asalSekolah" class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" required />
+              </div>
+              <div>
+                <label class="text-sm font-medium">Jurusan Pilihan</label>
+                <select name="jurusan" class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" required>
+                  <option value="">— pilih jurusan —</option>
+                  <option>Bisnis Daring dan Pemasaran</option>
+                  <option>Otomatisasi dan Tata Kelola Perkantoran</option>
+                  <option>Akuntansi dan Keuangan Lembaga</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-sm font-medium">Pesan / Motivasi</label>
+                <textarea name="pesan" rows="4" class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Ceritakan motivasi & prestasi singkat"></textarea>
+              </div>
+              <div id="ppdbAlert" class="hidden text-sm rounded-xl border p-3"></div>
+              <div class="flex items-center gap-3">
+                <button type="submit" class="ripple inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-white font-semibold shadow-glow active:scale-95 transition">
+                  Kirim Pendaftaran
+                </button>
+                <button type="reset" class="ripple inline-flex items-center gap-2 rounded-xl border px-5 py-3 font-semibold hover:bg-slate-50 active:scale-95 transition">Reset</button>
+              </div>
+              <p class="text-xs text-slate-500">Dengan mengirim formulir ini, Anda menyetujui pemrosesan data sesuai kebijakan privasi sekolah.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lokasi / Map -->
+    <section id="lokasi" class="py-16 lg:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-extrabold">Lokasi Sekolah</h2>
+          <p class="mt-3 text-slate-600">Jl. Siliwangi No.39, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat.</p>
+        </div>
+        <div class="mt-8 rounded-2xl overflow-hidden border shadow-sm">
+          <iframe
+            title="Peta SMK Perintis 1 Depok"
+            width="100%"
+            height="420"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Jl.%20Siliwangi%20No.39,%20Pancoran%20Mas,%20Depok&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontak & Sosial -->
+    <section id="kontak" class="py-16 lg:py-24 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-extrabold">Kontak</h2>
+            <div class="mt-4 space-y-2 text-slate-600">
+              <div>Telepon: <a href="tel:+62217773543" class="text-primary hover:underline">(021) 7773543</a></div>
+              <div>WhatsApp: <a href="https://wa.me/6281282460257" target="_blank" class="text-primary hover:underline">+62 812-8246-0257</a></div>
+              <div>Email PPDB: <a href="mailto:narenskii@gmail.com" class="text-primary hover:underline">narenskii@gmail.com</a></div>
+              <div>Alamat: Jl. Siliwangi No.39, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat</div>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="https://www.facebook.com/groups/1663550377209227/?ref=share&mibextid=NSMWBT" target="_blank" class="ripple rounded-xl border px-4 py-2 hover:bg-slate-50 active:scale-95 transition">Facebook</a>
+              <a href="https://www.instagram.com/official_smkperintis1depok?igsh=MWhuOTBmMHF6NDI3dg==" target="_blank" class="ripple rounded-xl border px-4 py-2 hover:bg-slate-50 active:scale-95 transition">Instagram</a>
+              <a href="https://youtube.com/@docsmkperintis1depok" target="_blank" class="ripple rounded-xl border px-4 py-2 hover:bg-slate-50 active:scale-95 transition">YouTube</a>
+            </div>
+          </div>
+          <div class="rounded-2xl border bg-white p-6 shadow-sm">
+            <h3 class="text-xl font-bold">Hubungi Kami</h3>
+            <p class="mt-2 text-slate-600">Untuk pertanyaan umum (non-PPDB), kirim pesan singkat di bawah ini.</p>
+            <form id="contactForm" class="mt-4 space-y-3">
+              <div class="grid md:grid-cols-2 gap-4">
+                <input name="nama" placeholder="Nama" class="w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" required>
+                <input type="email" name="email" placeholder="Email" class="w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" required>
+              </div>
+              <textarea name="pesan" rows="4" placeholder="Pesan" class="w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+              <div class="text-xs text-slate-500">Form ini contoh (frontend saja). Untuk mengaktifkan, arahkan ke endpoint /api/ppdb atau buat endpoint baru.</div>
+              <button class="ripple inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-white font-semibold shadow-glow active:scale-95 transition" type="submit" disabled>Kirim (Nonaktif)</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="text-sm text-slate-600">© <span id="y"></span> SMK Perintis 1 Depok. All rights reserved.</div>
+          <div class="text-sm text-slate-500">Didesain modern & elegan. Made with Tailwind CSS.</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

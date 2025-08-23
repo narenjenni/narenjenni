@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Galeri — SMK Perintis 1 Depok</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','system-ui']},colors:{primary:'#1E3A8A'}}}}</script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+<header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="/index.html" class="font-extrabold">SMK Perintis 1 Depok</a>
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="/berita.html" class="hover:text-primary">Berita</a>
+      <a href="/agenda.html" class="hover:text-primary">Agenda</a>
+      <a href="/galeri.html" class="hover:text-primary">Galeri</a>
+      <a href="/ppdb.html" class="hover:text-primary">PPDB</a>
+      <a href="/admin.html" class="hover:text-primary">Admin</a>
+    </nav>
+  </div>
+</header>
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <h1 class="text-3xl md:text-4xl font-extrabold">Galeri Kegiatan</h1>
+  <p class="mt-2 text-slate-600">Dokumentasi kegiatan siswa, praktik industri, dan prestasi.</p>
+  <div id="grid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+</section>
+<script>
+const imgs = [
+  "https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1523580846011-23f6f7b8b6c1?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1523580846011-2b1a2f8b4a6e?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop"
+];
+document.getElementById("grid").innerHTML = imgs.map(src => `
+  <figure class="overflow-hidden rounded-2xl border bg-white shadow-sm hover:shadow-xl transition">
+    <img src="${src}" alt="" class="w-full h-64 object-cover hover:scale-105 transition" />
+  </figure>
+`).join("");
+</script>
+
+</body>
+</html>
