@@ -1,110 +1,208 @@
 <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>PPDB — SMK Perintis 1 Depok</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
+          colors: { brand: { DEFAULT:'#0ea5e9', dark:'#0369a1' } },
+          keyframes: {
+            pop: { '0%':{ transform:'scale(.96)' }, '100%':{ transform:'scale(1)' } },
+            pulseRing: { '0%':{ transform:'scale(1)', opacity:.5 }, '100%':{ transform:'scale(1.6)', opacity:0 } }
+          },
+          animation: { pop:'pop .18s ease-out', ring:'pulseRing 1.6s ease-out infinite' },
+          boxShadow: { soft:'0 8px 24px rgba(2,132,199,.15)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media (prefers-reduced-motion: reduce){
+      *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-900 bg-white antialiased">
+  <!-- Header minimal -->
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-14 md:h-16 flex items-center">
+      <a href="/index.html#home" class="text-sm md:text-base font-semibold">SMK Perintis 1 Depok</a>
+    </div>
+  </header>
 
-<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>PPDB — SMK Perintis 1 Depok</title>
-<script src="https://cdn.tailwindcss.com"></script>
-</head><body class="font-sans text-slate-900 bg-white">
-<main class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-<section class="relative overflow-hidden">
-<div class="absolute inset-0 -z-10 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-700"></div>
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-<div class="max-w-3xl">
-<p class="uppercase tracking-wider text-white/90 text-xs font-semibold">PPDB SMK PERINTIS 1 DEPOK</p>
-<h1 class="text-3xl md:text-5xl font-extrabold leading-tight mt-2 text-white">Daftar PPDB Secara Online</h1>
-<p class="mt-3 text-white/90">Isi data singkat berikut. Setelah terkirim, tim kami akan menindaklanjuti melalui email dan WhatsApp.</p>
-</div>
-</div>
-</section>
-<section class="py-8 md:py-12 bg-white">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-8">
-<div class="lg:col-span-2">
-<div class="rounded-2xl border bg-white shadow-sm">
-<div class="p-5 md:p-6 border-b bg-slate-50 rounded-t-2xl">
-<ol class="flex flex-wrap items-center gap-3 text-xs text-slate-600">
-<li class="inline-flex items-center gap-2"><span class="h-6 w-6 grid place-items-center rounded-full bg-blue-600 text-white text-[11px] font-bold">1</span> Isi Data</li>
-<li class="inline-flex items-center gap-2"><span class="h-6 w-6 grid place-items-center rounded-full bg-slate-200 text-slate-700 text-[11px] font-bold">2</span> Verifikasi</li>
-<li class="inline-flex items-center gap-2"><span class="h-6 w-6 grid place-items-center rounded-full bg-slate-200 text-slate-700 text-[11px] font-bold">3</span> Dihubungi</li>
-</ol>
-<h2 class="text-xl md:text-2xl font-bold mt-3">Form Pendaftaran Peserta Didik Baru</h2>
-<p class="text-sm text-slate-600 mt-1">Gunakan email &amp; nomor WhatsApp aktif agar kami mudah menghubungi.</p>
-</div>
-<form class="p-5 md:p-6 grid gap-5" id="ppdbForm">
-<div class="grid gap-2">
-<label class="text-sm font-medium">Nama Lengkap <span class="text-red-600">*</span></label>
-<input class="h-11 rounded-xl border px-4 focus:outline-none focus:ring-2 focus:ring-sky-500" name="nama" required="" type="text"/>
-</div>
-<div class="grid gap-4 md:grid-cols-2">
-<div class="grid gap-2">
-<label class="text-sm font-medium">Email <span class="text-red-600">*</span></label>
-<input class="h-11 rounded-xl border px-4 focus:outline-none focus:ring-2 focus:ring-sky-500" name="email" required="" type="email"/>
-</div>
-<div class="grid gap-2">
-<label class="text-sm font-medium">Nomor WhatsApp</label>
-<input class="h-11 rounded-xl border px-4 focus:outline-none focus:ring-2 focus:ring-sky-500" name="telp" placeholder="+62…" type="tel"/>
-</div>
-</div>
-<div class="grid gap-2">
-<label class="text-sm font-medium">Jurusan Pilihan <span class="text-red-600">*</span></label>
-<select class="h-11 rounded-xl border px-4 focus:outline-none focus:ring-2 focus:ring-sky-500" name="jurusan" required="">
-<option value="">— pilih jurusan —</option>
-<option value="BDP">Bisnis Daring &amp; Pemasaran (BDP)</option>
-<option value="OTKP">Otomatisasi &amp; Tata Kelola Perkantoran (OTKP)</option>
-<option value="AKL">Akuntansi &amp; Keuangan Lembaga (AKL)</option>
-</select>
-</div>
-<div class="grid gap-2">
-<label class="text-sm font-medium">Pesan Tambahan</label>
-<textarea class="rounded-xl border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500" name="pesan" placeholder="Contoh: Saya ingin konsultasi biaya &amp; jadwal…" rows="4"></textarea>
-</div>
-<div class="flex flex-wrap items-center gap-4">
-<button class="rounded-xl bg-sky-600 text-white px-5 py-2.5 font-semibold shadow active:scale-95" id="btnSubmit" type="submit">Kirim Pendaftaran</button>
-<span class="text-sm" id="statusMsg"></span>
-</div>
-<p class="mt-1 text-xs text-slate-500">Dengan mengirimkan formulir ini, Anda menyetujui dihubungi via email/WhatsApp untuk informasi PPDB.</p>
-</form>
-</div>
-</div>
-<aside class="space-y-4">
-<div class="rounded-2xl border p-5 md:p-6 bg-slate-50">
-<div class="text-sm text-slate-600">Informasi</div>
-<ul class="mt-3 space-y-2 text-sm text-slate-700 list-disc pl-5">
-<li>Isi data sesuai identitas.</li>
-<li>Gunakan email &amp; WhatsApp aktif.</li>
-<li>Tim PPDB akan menghubungi setelah verifikasi.</li>
-</ul>
-</div>
-</aside>
-</div>
-</section>
-</main>
-<script>
-(function(){const form=document.getElementById("ppdbForm");const btn=document.getElementById("btnSubmit");const statusMsg=document.getElementById("statusMsg");
-form.addEventListener("submit",async(e)=>{e.preventDefault();statusMsg.textContent="";statusMsg.className="text-sm";btn.disabled=true;btn.textContent="Mengirim...";
-const data={nama:form.nama.value.trim(),email:form.email.value.trim(),telp:form.telp.value.trim(),jurusan:form.jurusan.value,pesan:form.pesan.value.trim()};
-try{const res=await fetch("/api/send",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});const txt=await res.text();let json;try{json=JSON.parse(txt);}catch(_){throw new Error("Server tidak mengembalikan JSON. Response: "+txt.slice(0,100)+"...");}
-if(res.ok&&json.ok){statusMsg.className="text-sm text-green-600";statusMsg.textContent=json.message||"Berhasil dikirim";form.reset();}
-else{statusMsg.className="text-sm text-red-600";statusMsg.textContent=json.message||"Gagal mengirim";}}
-catch(err){statusMsg.className="text-sm text-red-600";statusMsg.textContent=err.message||"Terjadi kesalahan";}
-finally{btn.disabled=false;btn.textContent="Kirim Pendaftaran";}});})();</script>
-<a aria-label="Hubungi PPDB via WhatsApp" class="fixed right-4 bottom-4 z-50 h-12 w-12 grid place-items-center rounded-full shadow-lg bg-green-500 hover:scale-105 active:scale-95 transition" href="https://wa.me/6281282460257?text=Halo%20Admin%20PPDB%20SMK%20Perintis%201%20Depok%2C%20saya%20sudah%20mengisi%20formulir%20PPDB%20di%20website.%20Mohon%20informasi%20lanjutan%20ya." rel="noopener noreferrer" target="_blank">
-<svg aria-hidden="true" class="h-6 w-6 fill-white" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-<path d="M380.9 97.1C339-...-snip-..."></path>
-</svg>
-</a>
-<a aria-label="Hubungi via WhatsApp" class="fixed right-4 bottom-4 z-50 h-14 w-14 grid place-items-center rounded-full shadow-lg bg-green-500 hover:scale-105 active:scale-95 transition" href="https://wa.me/6281282460257?text=Halo%20Admin%20PPDB%20SMK%20Perintis%201%20Depok%2C%20saya%20sudah%20mengisi%20formulir%20PPDB%20di%20website.%20Mohon%20informasi%20lanjutan%20ya." rel="noopener noreferrer" target="_blank">
-<svg aria-hidden="true" class="h-7 w-7 fill-white" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-<path d="M380.9 97.1C339-5 278.4-28.2 214.6 1.5 150.8 31.3 110.6 95.7 112 165.2c.6 30.1 8.4 59.2 23.1 85l-15 55.1 56.4-14.8c24.7 13.5 52.4 20.6 80.7 20.4 69.5-1.4 133.9-41.6 163.7-105.4 29.7-63.8 6.5-124.4-40-208.4zM224 438.7c-35.8 0-70.7-9.6-101.2-27.8L48 448l37.1-74.9C67.5 338.6 56 300.9 56 262.6 56 150.1 147.5 58.6 260 58.6c50.1 0 97.1 19.5 132.6 55 35.5 35.5 55 82.5 55 132.6 0 112.5-91.5 204-204 204zM319.8 304c-5.2-2.6-30.8-15.2-35.6-16.9-4.8-1.7-8.3-2.6-11.8 2.6-3.5 5.2-13.5 16.9-16.6 20.4-3 3.5-6.1 3.9-11.3 1.3-5.2-2.6-21.9-8.1-41.6-25.9-15.4-13.3-25.9-29.7-28.9-34.7-3-5.2-.3-8 2.3-10.6 2.3-2.3 5.2-6.1 7.8-9.1 2.6-3 3.9-5.2 5.2-8.7 1.7-3.5 .9-6.5-.4-9.1-1.3-2.6-11.8-28.5-16.2-39.1-4.3-10.4-8.7-9-11.8-9.2-3-.2-6.5-.2-10-.2s-9.1 1.3-13.9 6.5c-4.8 5.2-18.3 17.9-18.3 43.5s18.7 50.4 21.4 53.8c2.6 3.5 36.8 56.4 89.1 79.1 12.5 5.4 22.3 8.6 30 11 12.6 4 24-.7 27.6-11.5 3.5-10.9 3.5-20.4 2.6-22.4-.8-2.2-4.3-3.5-9.5-6.1z"></path>
-</svg>
-</a>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-700"></div>
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+      <div class="max-w-[720px]">
+        <p class="uppercase tracking-wider text-white/90 text-[11px] md:text-xs font-semibold">PPDB SMK PERINTIS 1 DEPOK</p>
+        <h1 class="mt-2 font-extrabold leading-tight text-white" style="font-size:clamp(1.6rem,2.6vw + 1rem,3rem);">
+          Daftar PPDB Secara Online
+        </h1>
+        <p class="mt-2 md:mt-3 text-white/90 text-sm md:text-base">
+          Isi data singkat berikut. Setelah terkirim, tim kami akan menindaklanjuti melalui email dan WhatsApp.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<a aria-label="WhatsApp PPDB" class="fixed right-4 bottom-[4.5rem] sm:bottom-6 z-50 h-14 w-14 grid place-items-center rounded-full bg-green-500 shadow-lg hover:shadow-xl transition will-change-transform" href="https://wa.me/6281282460257?text=Halo%20Admin%20PPDB%20SMK%20Perintis%201%20Depok%2C%20saya%20sudah%20mengisi%20formulir%20PPDB%20di%20website.%20Mohon%20informasi%20lanjutan%20ya." rel="noopener noreferrer" target="_blank">
-<span class="absolute inset-0 rounded-full bg-green-500/40 -z-10 animate-ring"></span>
-<svg class="h-7 w-7 fill-white pointer-events-none" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-<path d="M380.9 97.1C339 55.2 283.9 32 224.1 32 106.1 32 8 119.5 8 227.6c0 37.7 10.4 73.1 28.5 103.4L0 480l152.6-35.9c28 15.4 60.2 24.1 94.3 24.1 118 0 216.1-87.5 216.1-195.6 0-52.3-22.9-100-62.1-135.5zM224.1 418.2c-30 0-59.1-7.9-84.8-22.8l-5.9-3.5-90.4 21.3 19.3-88.1-3.9-6.1c-17.3-27.2-26.4-58.6-26.4-91.4 0-89.3 79.6-161.9 177.1-161.9 47.4 0 91.9 17.5 125.6 49.4 33.5 31.9 51.9 74.4 51.9 120.6 0 89.3-79.6 161.7-181 161.7zm100.7-121.9c-5.5-2.7-32.5-15.9-37.6-17.7-5.1-1.9-8.8-2.7-12.5 2.7-3.6 5.4-14.3 17.7-17.5 21.3-3.2 3.6-6.4 4.1-12 1.4-5.5-2.7-23.2-8.5-44.4-27.1-16.4-14.2-27.4-31.8-30.7-37.2-3.2-5.4-.3-8.2 2.4-11 2.5-2.6 5.5-6 8.3-9.1 2.7-3 3.6-5 5.5-8.2 1.8-3.4 .9-6.2-.5-8.7-1.5-2.7-12.5-30.2-17.1-41.5-4.5-10.9-9.1-9.5-12.5-9.7l-10.7-.2c-3.2 0-8.3 1.2-12.8 6.2-4.4 4.9-16.7 16.3-16.7 39.7s17.1 46 19.5 49.2c2.4 3.3 33.6 51.4 81.3 72.1 11.3 4.9 20.2 7.9 27.2 9.1 11.4 3.1 21.8 1.5 30-9.2 8.7-10.6 14.3-20 16.3-27.6 3.8-7.6 2.1-12.3-3.4-15z"></path>
-</svg>
-</a>
-<script>
-var el=document.currentScript.previousElementSibling;
-el.addEventListener('pointerdown',function(){ el.classList.add('animate-pop'); setTimeout(function(){ el.classList.remove('animate-pop'); },220); });
-</script>
-</body></html>
+  <!-- Main -->
+  <main>
+    <section class="py-6 sm:py-8 md:py-12">
+      <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 grid gap-6 lg:grid-cols-3">
+        <!-- Form -->
+        <div class="lg:col-span-2">
+          <div class="rounded-2xl border bg-white shadow-soft">
+            <div class="p-4 sm:p-5 md:p-6 border-b bg-slate-50 rounded-t-2xl">
+              <ol class="flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs text-slate-600">
+                <li class="inline-flex items-center gap-2"><span class="h-5 w-5 sm:h-6 sm:w-6 grid place-items-center rounded-full bg-sky-600 text-white text-[10px] sm:text-[11px] font-bold">1</span> Isi Data</li>
+                <li class="inline-flex items-center gap-2"><span class="h-5 w-5 sm:h-6 sm:w-6 grid place-items-center rounded-full bg-slate-200 text-slate-700 text-[10px] sm:text-[11px] font-bold">2</span> Verifikasi</li>
+                <li class="inline-flex items-center gap-2"><span class="h-5 w-5 sm:h-6 sm:w-6 grid place-items-center rounded-full bg-slate-200 text-slate-700 text-[10px] sm:text-[11px] font-bold">3</span> Dihubungi</li>
+              </ol>
+              <h2 class="text-lg sm:text-xl md:text-2xl font-bold mt-3">Form Pendaftaran Peserta Didik Baru</h2>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1">Gunakan email & nomor WhatsApp aktif agar kami mudah menghubungi.</p>
+            </div>
+
+            <form id="ppdbForm" class="p-4 sm:p-5 md:p-6 grid gap-4 sm:gap-5">
+              <div class="grid gap-1.5">
+                <label class="text-sm font-medium">Nama Lengkap <span class="text-red-600">*</span></label>
+                <input name="nama" type="text" required class="h-11 rounded-xl border px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-sky-500">
+              </div>
+
+              <div class="grid gap-4 md:grid-cols-2">
+                <div class="grid gap-1.5">
+                  <label class="text-sm font-medium">Email <span class="text-red-600">*</span></label>
+                  <input name="email" type="email" required class="h-11 rounded-xl border px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                </div>
+                <div class="grid gap-1.5">
+                  <label class="text-sm font-medium">Nomor WhatsApp</label>
+                  <input name="telp" type="tel" placeholder="+62…" class="h-11 rounded-xl border px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                </div>
+              </div>
+
+              <div class="grid gap-1.5">
+                <label class="text-sm font-medium">Jurusan Pilihan <span class="text-red-600">*</span></label>
+                <select name="jurusan" required class="h-11 rounded-xl border px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                  <option value="">— pilih jurusan —</option>
+                  <option value="BDP">Bisnis Daring & Pemasaran (BDP)</option>
+                  <option value="OTKP">Otomatisasi & Tata Kelola Perkantoran (OTKP)</option>
+                  <option value="AKL">Akuntansi & Keuangan Lembaga (AKL)</option>
+                </select>
+              </div>
+
+              <div class="grid gap-1.5">
+                <label class="text-sm font-medium">Pesan Tambahan</label>
+                <textarea name="pesan" rows="4" class="rounded-xl border px-3 sm:px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500" placeholder="Contoh: Saya ingin konsultasi biaya & jadwal…"></textarea>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+                <button type="submit" id="btnSubmit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white px-4 sm:px-5 py-2.5 font-semibold shadow transition-transform active:scale-95">
+                  <span>Kirim Pendaftaran</span>
+                  <svg class="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </button>
+                <span id="statusMsg" class="text-xs sm:text-sm"></span>
+              </div>
+
+              <p class="mt-1 text-[11px] sm:text-xs text-slate-500">Dengan mengirimkan formulir ini, Anda menyetujui dihubungi via email/WhatsApp untuk informasi PPDB.</p>
+            </form>
+          </div>
+        </div>
+
+        <!-- Info kecil -->
+        <aside class="space-y-4">
+          <div class="rounded-2xl border p-4 sm:p-5 md:p-6 bg-slate-50">
+            <div class="text-sm text-slate-600">Informasi</div>
+            <ul class="mt-3 space-y-2 text-sm text-slate-700 list-disc pl-5">
+              <li>Isi data sesuai identitas.</li>
+              <li>Gunakan email & WhatsApp aktif.</li>
+              <li>Tim PPDB akan menghubungi setelah verifikasi.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8 text-xs sm:text-sm text-slate-500">
+      © <span id="y"></span> SMK Perintis 1 Depok
+    </div>
+  </footer>
+
+  <!-- WA FAB tunggal -->
+  <a
+    data-wa-fab
+    href="https://wa.me/6281282460257?text=Halo%20Admin%20PPDB%20SMK%20Perintis%201%20Depok%2C%20saya%20sudah%20mengisi%20formulir.%20Mohon%20informasi%20lanjutan%20ya."
+    target="_blank" rel="noopener noreferrer" aria-label="WhatsApp PPDB"
+    class="fixed right-4 bottom-5 sm:bottom-6 z-50 h-14 w-14 grid place-items-center rounded-full bg-green-500 shadow-lg hover:shadow-xl transition active:scale-95"
+  >
+    <span class="absolute inset-0 rounded-full bg-green-500/40 -z-10 animate-ring"></span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-7 w-7 fill-white pointer-events-none" aria-hidden="true">
+      <path d="M380.9 97.1C339 55.2 283.9 32 224.1 32 106.1 32 8 119.5 8 227.6c0 37.7 10.4 73.1 28.5 103.4L0 480l152.6-35.9c28 15.4 60.2 24.1 94.3 24.1 118 0 216.1-87.5 216.1-195.6 0-52.3-22.9-100-62.1-135.5zM224.1 418.2c-30 0-59.1-7.9-84.8-22.8l-5.9-3.5-90.4 21.3 19.3-88.1-3.9-6.1c-17.3-27.2-26.4-58.6-26.4-91.4 0-89.3 79.6-161.9 177.1-161.9 47.4 0 91.9 17.5 125.6 49.4 33.5 31.9 51.9 74.4 51.9 120.6 0 89.3-79.6 161.7-181 161.7zm100.7-121.9c-5.5-2.7-32.5-15.9-37.6-17.7-5.1-1.9-8.8-2.7-12.5 2.7-3.6 5.4-14.3 17.7-17.5 21.3-3.2 3.6-6.4 4.1-12 1.4-5.5-2.7-23.2-8.5-44.4-27.1-16.4-14.2-27.4-31.8-30.7-37.2-3.2-5.4-.3-8.2 2.4-11 2.5-2.6 5.5-6 8.3-9.1 2.7-3 3.6-5 5.5-8.2 1.8-3.4 .9-6.2-.5-8.7-1.5-2.7-12.5-30.2-17.1-41.5-4.5-10.9-9.1-9.5-12.5-9.7l-10.7-.2c-3.2 0-8.3 1.2-12.8 6.2-4.4 4.9-16.7 16.3-16.7 39.7s17.1 46 19.5 49.2c2.4 3.3 33.6 51.4 81.3 72.1 11.3 4.9 20.2 7.9 27.2 9.1 11.4 3.1 21.8 1.5 30-9.2 8.7-10.6 14.3-20 16.3-27.6 3.8-7.6 2.1-12.3-3.4-15z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Tanggal footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Submit handler (tetap sama seperti versi sebelumnya)
+    (function(){
+      const form = document.getElementById("ppdbForm");
+      const btn = document.getElementById("btnSubmit");
+      const statusMsg = document.getElementById("statusMsg");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        statusMsg.textContent=""; statusMsg.className="text-xs sm:text-sm";
+        btn.disabled = true; btn.classList.add('animate-pop');
+        btn.querySelector("span").textContent = "Mengirim...";
+
+        const data = {
+          nama: form.nama.value.trim(),
+          email: form.email.value.trim(),
+          telp: form.telp.value.trim(),
+          jurusan: form.jurusan.value,
+          pesan: form.pesan.value.trim()
+        };
+
+        try{
+          const res = await fetch("/api/send", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(data) });
+          const text = await res.text();
+          let json; try{ json = JSON.parse(text); }catch(_){ throw new Error("Server tidak mengembalikan JSON"); }
+          if(res.ok && json.ok){
+            statusMsg.className="text-xs sm:text-sm text-green-600"; statusMsg.textContent=json.message||"Berhasil dikirim."; form.reset();
+          } else {
+            statusMsg.className="text-xs sm:text-sm text-red-600"; statusMsg.textContent=json.message||"Gagal mengirim.";
+          }
+        }catch(err){
+          statusMsg.className="text-xs sm:text-sm text-red-600"; statusMsg.textContent=err.message||"Terjadi kesalahan jaringan.";
+        }finally{
+          btn.disabled=false; btn.querySelector("span").textContent="Kirim Pendaftaran";
+        }
+      });
+    })();
+
+    // --- Hapus semua WA FAB lama (jaga-jaga ada sisa dari tema lama) ---
+    (function(){
+      const fabs = document.querySelectorAll('[data-wa-fab]');
+      if (fabs.length > 1) {
+        fabs.forEach((el,i) => { if(i>0) el.remove(); });
+      }
+      // juga hapus anchor wa.me lain di halaman
+      document.querySelectorAll('a[href*="wa.me"]').forEach(a=>{
+        if(!a.hasAttribute('data-wa-fab')) a.remove();
+      });
+    })();
+  </script>
+</body>
+</html>
