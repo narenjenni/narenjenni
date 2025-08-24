@@ -16,9 +16,10 @@
         colors: { primary: '#1E3A8A', accent: '#F59E0B' },
         keyframes: {
           float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } },
-          fadeInUp: { '0%':{opacity:0, transform:'translateY(12px)'}, '100%':{opacity:1, transform:'translateY(0)'} }
+          fadeInUp: { '0%':{opacity:0, transform:'translateY(12px)'}, '100%':{opacity:1, transform:'translateY(0)'} },
+          shine: { '0%':{backgroundPosition:'-200% 0'}, '100%':{backgroundPosition:'200% 0'} }
         },
-        animation: { float:'float 7s ease-in-out infinite', fadeInUp:'fadeInUp .7s ease both' },
+        animation: { float:'float 7s ease-in-out infinite', fadeInUp:'fadeInUp .7s ease both', shine:'shine 2s linear infinite' },
         boxShadow: { glow:'0 12px 36px rgba(30,58,138,.25)' }
       }
     }
@@ -26,15 +27,17 @@
 </script>
 <style>
   .ripple{position:relative;overflow:hidden}
-  .ripple:after{content:'';position:absolute;inset:0;background:radial-gradient(circle,rgba(255,255,255,.35) 10%,transparent 11%) no-repeat;background-size:0 0;border-radius:inherit;transition:background-size .45s ease,opacity .6s ease;opacity:0}
+  .ripple:after{content:'';position:absolute;inset:0;background:radial-gradient(circle,rgba(255,255,255,.4) 12%,transparent 13%) no-repeat;background-size:0 0;border-radius:inherit;transition:background-size .45s ease,opacity .6s ease;opacity:0}
   .ripple:active:after{background-size:200% 200%;opacity:1;transition:0s}
   .tilt{transform-style:preserve-3d;will-change:transform}
   .tilt:hover{transform:perspective(800px) rotateX(3deg) rotateY(-3deg);transition:transform .2s ease}
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
   .reveal.visible{opacity:1;transform:translateY(0)}
+  .glass{background:rgba(255,255,255,.6);backdrop-filter:saturate(140%) blur(8px)}
 </style>
 </head>
 <body class="bg-gradient-to-b from-white to-slate-50 text-slate-800 antialiased">
+
   <div class="bg-primary text-white text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col md:flex-row items-center justify-between gap-2">
       <div class="flex items-center gap-2">
@@ -49,7 +52,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
         <a href="#home" class="flex items-center gap-3 group">
-          <img src="/assets/logo.svg" alt="Logo SMK Perintis 1 Depok" class="h-10 w-10 rounded-xl shadow-glow"/>
+          <img src="/assets/logo.svg" class="h-10 w-10 rounded-xl shadow-glow" alt="Logo"/>
           <div class="leading-tight">
             <div class="font-bold">SMK Perintis 1 Depok</div>
             <div class="text-xs text-slate-500">Sekolah Vokasi Modern</div>
@@ -58,6 +61,7 @@
         <nav class="hidden lg:flex items-center gap-6 text-[15px] font-medium">
           <a href="#home" class="hover:text-primary">Beranda</a>
           <a href="#profil" class="hover:text-primary">Profil Sekolah</a>
+          <a href="/sejarah.html" class="hover:text-primary">Sejarah</a>
           <a href="/sambutan.html" class="hover:text-primary">Sambutan</a>
           <a href="#kepsek" class="hover:text-primary">Profil Kepala Sekolah</a>
           <a href="#jurusan" class="hover:text-primary">Program Keahlian</a>
@@ -79,6 +83,7 @@
         <nav class="grid gap-2 text-sm">
           <a href="#home" class="px-2 py-2 rounded-lg hover:bg-slate-50">Beranda</a>
           <a href="#profil" class="px-2 py-2 rounded-lg hover:bg-slate-50">Profil Sekolah</a>
+          <a href="/sejarah.html" class="px-2 py-2 rounded-lg hover:bg-slate-50">Sejarah</a>
           <a href="/sambutan.html" class="px-2 py-2 rounded-lg hover:bg-slate-50">Sambutan</a>
           <a href="#kepsek" class="px-2 py-2 rounded-lg hover:bg-slate-50">Profil Kepala Sekolah</a>
           <a href="#jurusan" class="px-2 py-2 rounded-lg hover:bg-slate-50">Program Keahlian</a>
@@ -93,6 +98,7 @@
     </div>
   </header>
 
+  <!-- Hero -->
   <section id="home" class="relative overflow-hidden">
     <div class="pointer-events-none absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full bg-blue-100 blur-3xl opacity-60"></div>
     <div class="pointer-events-none absolute -bottom-24 -left-24 w-[520px] h-[520px] rounded-full bg-amber-100 blur-3xl opacity-70"></div>
@@ -116,8 +122,8 @@
           <div class="aspect-[4/3] rounded-3xl bg-gradient-to-tr from-blue-50 via-white to-blue-100 border shadow-xl overflow-hidden">
             <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1600&auto=format&fit=crop" alt="Siswa SMK belajar" class="w-full h-full object-cover"/>
           </div>
-          <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl px-5 py-4 shadow-lg border">
-            <div class="text-xs text-slate-500">Alamat</div>
+          <div class="absolute -bottom-6 -left-6 glass rounded-2xl px-5 py-4 shadow-lg border">
+            <div class="text-xs text-slate-700">Alamat</div>
             <div class="font-semibold">Jl. Siliwangi No.39, Pancoran Mas, Depok</div>
           </div>
         </div>
@@ -125,6 +131,7 @@
     </div>
   </section>
 
+  <!-- Profil -->
   <section id="profil" class="py-12 lg:py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-3 gap-8 items-start">
@@ -158,6 +165,7 @@
     </div>
   </section>
 
+  <!-- Sambutan -->
   <section id="kepsek" class="py-12 lg:py-16 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-3 gap-8 items-start">
@@ -167,7 +175,7 @@
         </div>
         <div class="reveal lg:col-span-2 rounded-2xl border bg-white p-6 shadow-sm">
           <div class="flex gap-4 items-center">
-            <img src="/assets/logo.svg" alt="Foto Kepala Sekolah" class="w-20 h-20 rounded-xl object-cover bg-white p-1 border"/>
+            <img src="/assets/logo.svg" class="w-20 h-20 rounded-xl bg-white p-1 border" alt="Logo"/>
             <div>
               <div class="font-bold text-lg">(Nama Kepala Sekolah)</div>
               <div class="text-sm text-slate-500">Kepala Sekolah SMK Perintis 1 Depok</div>
@@ -189,6 +197,7 @@
     </div>
   </section>
 
+  <!-- Program Keahlian -->
   <section id="jurusan" class="py-12 lg:py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto reveal">
@@ -219,7 +228,6 @@
           </details>
           <a href="/ppdb.html" class="mt-4 inline-block text-primary font-semibold">Daftar ke BDP →</a>
         </article>
-
         <article class="reveal rounded-2xl border bg-white p-6 shadow-sm tilt">
           <div class="h-12 w-12 rounded-xl bg-primary/10 text-primary grid place-content-center text-2xl">🏢</div>
           <h3 class="mt-4 text-xl font-extrabold">Otomatisasi dan Tata Kelola Perkantoran</h3>
@@ -243,7 +251,6 @@
           </details>
           <a href="/ppdb.html" class="mt-4 inline-block text-primary font-semibold">Daftar ke OTKP →</a>
         </article>
-
         <article class="reveal rounded-2xl border bg-white p-6 shadow-sm tilt">
           <div class="h-12 w-12 rounded-xl bg-primary/10 text-primary grid place-content-center text-2xl">📊</div>
           <h3 class="mt-4 text-xl font-extrabold">Akuntansi dan Keuangan Lembaga</h3>
@@ -271,6 +278,7 @@
     </div>
   </section>
 
+  <!-- Berita & Agenda -->
   <section class="py-12 lg:py-16 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-3 gap-8">
@@ -290,6 +298,7 @@
     </div>
   </section>
 
+  <!-- Lokasi -->
   <section id="lokasi" class="py-12 lg:py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto reveal">
@@ -302,6 +311,7 @@
     </div>
   </section>
 
+  <!-- Kontak -->
   <section id="kontak" class="py-12 lg:py-16 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12">
@@ -343,47 +353,35 @@
   </footer>
 
   <script>
-    // Mobile menu
-    (function() {
-      var b=document.getElementById('mobileMenuBtn');
-      var m=document.getElementById('mobileMenu');
-      if(b){b.addEventListener('click',function(){m.classList.toggle('hidden');});}
-      var y=document.getElementById('y'); if(y){y.textContent=new Date().getFullYear();}
-      // Dummy news & agenda
+    (function(){
+      var b=document.getElementById('mobileMenuBtn'); var m=document.getElementById('mobileMenu');
+      if(b){ b.addEventListener('click', function(){ m.classList.toggle('hidden'); }); }
+      var y=document.getElementById('y'); if(y){ y.textContent=new Date().getFullYear(); }
       var news=[
         {title:"Juara 1 Lomba Marketing",date:"2025-08-10",excerpt:"Tim BDP meraih juara 1 kompetisi marketing tingkat kota.",cover:"https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?q=80&w=1200&auto=format&fit=crop"},
         {title:"Workshop Administrasi Modern",date:"2025-08-05",excerpt:"Jurusan OTKP adakan workshop digital office tools.",cover:"https://images.unsplash.com/photo-1584697964199-3aadf5d0c1f2?q=80&w=1200&auto=format&fit=crop"},
         {title:"Kunjungan Industri Keuangan",date:"2025-07-29",excerpt:"AKL melakukan kunjungan ke perusahaan fintech.",cover:"https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1200&auto=format&fit=crop"}
       ];
-      var nElem=document.getElementById('newsHome');
-      if(nElem){ 
-        var html='';
-        for(var i=0;i<news.length;i++){ 
-          var n=news[i];
+      var n = document.getElementById('newsHome'); if(n){
+        var html=''; for(var i=0;i<news.length;i++){ var item=news[i];
           html += '<article class="rounded-2xl overflow-hidden border bg-white shadow-sm hover:shadow-xl transition">'
-               +  '<img src="'+n.cover+'" alt="" class="aspect-[16/9] w-full object-cover"/>'
-               +  '<div class="p-5"><div class="text-xs text-slate-500">'+ new Date(n.date).toLocaleDateString('id-ID') +'</div>'
-               +  '<h3 class="mt-1 text-lg font-bold">'+n.title+'</h3><p class="mt-1 text-slate-600">'+n.excerpt+'</p></div></article>';
-        }
-        nElem.innerHTML = html;
+               +  '<img src="'+item.cover+'" alt="" class="aspect-[16/9] w-full object-cover"/>'
+               +  '<div class="p-5"><div class="text-xs text-slate-500">'+ new Date(item.date).toLocaleDateString('id-ID') +'</div>'
+               +  '<h3 class="mt-1 text-lg font-bold">'+item.title+'</h3><p class="mt-1 text-slate-600">'+item.excerpt+'</p></div></article>';
+        } n.innerHTML = html;
       }
       var agenda=[
         {date:"2025-08-30",title:"Penutupan Gelombang PPDB",loc:"Online"},
         {date:"2025-09-05",title:"MPLS Siswa Baru",loc:"Aula"},
         {date:"2025-10-10",title:"UTS Ganjil",loc:"Kelas"}
       ];
-      var aElem=document.getElementById('agendaHome');
-      if(aElem){
-        var ahtml='';
-        for(var j=0;j<agenda.length;j++){
-          var a=agenda[j];
-          ahtml += '<li class="rounded-xl border bg-white p-4 shadow-sm flex items-start gap-3">'
-                +  '<div class="shrink-0 rounded-lg bg-primary/10 text-primary px-3 py-1.5 font-bold">'+ new Date(a.date).toLocaleDateString('id-ID',{day:'2-digit',month:'short'}) +'</div>'
-                +  '<div><div class="font-semibold">'+a.title+'</div><div class="text-sm text-slate-500">'+a.loc+'</div></div></li>';
-        }
-        aElem.innerHTML = ahtml;
+      var a=document.getElementById('agendaHome'); if(a){
+        var ah=''; for(var j=0;j<agenda.length;j++){ var it=agenda[j];
+          ah += '<li class="rounded-xl border bg-white p-4 shadow-sm flex items-start gap-3">'
+              + '<div class="shrink-0 rounded-lg bg-primary/10 text-primary px-3 py-1.5 font-bold">'+ new Date(it.date).toLocaleDateString('id-ID',{day:'2-digit',month:'short'}) +'</div>'
+              + '<div><div class="font-semibold">'+it.title+'</div><div class="text-sm text-slate-500">'+it.loc+'</div></div></li>';
+        } a.innerHTML = ah;
       }
-      // Reveal on scroll
       var els=document.querySelectorAll('.reveal');
       var io=new IntersectionObserver(function(entries){
         entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });

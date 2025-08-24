@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <title>Agenda — SMK Perintis 1 Depok</title>
+  <title>Sejarah — SMK Perintis 1 Depok</title>
   <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,30 +55,16 @@
     </div>
   </header>
   
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-  <h1 class="text-3xl md:text-4xl font-extrabold">Agenda & Kalender</h1>
-  <p class="mt-2 text-slate-600">Jadwal kegiatan akademik, penerimaan, ujian, dan event sekolah.</p>
-  <div class="mt-6 overflow-x-auto">
-    <table class="min-w-full border bg-white rounded-2xl overflow-hidden">
-      <thead class="bg-slate-100"><tr><th class="text-left px-4 py-3">Tanggal</th><th class="text-left px-4 py-3">Kegiatan</th><th class="text-left px-4 py-3">Lokasi</th></tr></thead>
-      <tbody id="rows" class="divide-y"></tbody>
-    </table>
+<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <h1 class="text-3xl md:text-4xl font-extrabold">Sejarah SMK Perintis 1 Depok</h1>
+  <p class="mt-3 text-slate-600">Ringkasan perjalanan berdirinya sekolah, tonggak penting, dan perkembangan program keahlian.</p>
+  <div class="mt-6 space-y-4">
+    <div class="rounded-2xl border bg-white p-5 shadow-sm"><b>200X</b> — Sekolah berdiri untuk menjawab kebutuhan tenaga terampil di Depok.</div>
+    <div class="rounded-2xl border bg-white p-5 shadow-sm"><b>201X</b> — Pembukaan jurusan Bisnis Daring dan Pemasaran & Otomatisasi dan Tata Kelola Perkantoran.</div>
+    <div class="rounded-2xl border bg-white p-5 shadow-sm"><b>201X</b> — Penambahan jurusan Akuntansi dan Keuangan Lembaga.</div>
+    <div class="rounded-2xl border bg-white p-5 shadow-sm"><b>202X</b> — Implementasi Project Based Learning dan kemitraan DU/DI.</div>
   </div>
 </main>
-<script>
-var agenda=[
-  {date:"2025-08-30", title:"Penutupan Gelombang PPDB", loc:"Online"},
-  {date:"2025-09-05", title:"MPLS Siswa Baru", loc:"Aula"},
-  {date:"2025-10-10", title:"Ujian Tengah Semester Ganjil", loc:"Kelas"}
-];
-var rows=document.getElementById('rows'); var html='';
-for(var i=0;i<agenda.length;i++){ var a=agenda[i];
-  html += '<tr><td class="px-4 py-3">'+ new Date(a.date).toLocaleDateString('id-ID') +'</td>'
-       +  '<td class="px-4 py-3 font-medium">'+a.title+'</td>'
-       +  '<td class="px-4 py-3">'+a.loc+'</td></tr>';
-}
-rows.innerHTML = html;
-</script>
 
 </body>
 </html>
