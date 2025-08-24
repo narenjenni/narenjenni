@@ -1,29 +1,33 @@
-// Vercel Serverless Function
 import nodemailer from "nodemailer";
-
-export default async function handler(req, res) {
-  if (req.method !== "POST") return res.status(405).json({ ok: false, message: "Method not allowed" });
-  const b = req.body || {};
-  const reqs = ["namaLengkap","nisn","email","telepon","alamat","asalSekolah","jurusan","pesan"];
-  for (const k of reqs) if (!b[k] || String(b[k]).trim()==="") return res.status(400).json({ ok:false, message:`Field "${k}" wajib diisi.` });
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST, port: Number(process.env.SMTP_PORT||465),
-    secure: String(process.env.SMTP_SECURE||"true")==="true",
-    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
-  });
-  try {
-    await transporter.verify();
-    const toList = (process.env.PPDB_TO_EMAIL||"narenskii@gmail.com").split(",").map(s=>s.trim()).filter(Boolean);
-    const html = `<div style="font-family: ui-sans-serif, system-ui;">
-      <h2>Formulir PPDB Baru</h2>
-      <p><b>Nama Lengkap:</b> ${b.namaLengkap}</p><p><b>NISN:</b> ${b.nisn}</p>
-      <p><b>Email:</b> ${b.email}</p><p><b>Telepon/WA:</b> ${b.telepon}</p>
-      <p><b>Alamat:</b> ${b.alamat}</p><p><b>Asal Sekolah:</b> ${b.asalSekolah}</p>
-      <p><b>Jurusan Pilihan:</b> ${b.jurusan}</p><hr/><p><b>Pesan:</b><br/>${String(b.pesan||"").replace(/\n/g,"<br/>")}</p></div>`;
-    const info = await transporter.sendMail({
-      from: process.env.MAIL_FROM || '"PPDB SMK Perintis 1 Depok" <no-reply@smkperintis1depok.sch.id>',
-      to: toList, subject: `Pendaftaran PPDB: ${b.namaLengkap} - ${b.jurusan}`, replyTo: b.email, html
+export default async function handler(req,res){
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  if(req.method==="OPTIONS") return res.status(200).end();
+  if(req.method!=="POST") return res.status(405).json({ok:false,message:"Method not allowed"});
+  try{
+    const {nama,email,jurusan,pesan,telp}=req.body||{};
+    if(!nama||!email||!jurusan) return res.status(400).json({ok:false,message:"Nama, Email, dan Jurusan wajib diisi."});
+    const host=process.env.SMTP_HOST||"smtp.gmail.com";
+    const port=Number(process.env.SMTP_PORT||465);
+    const secure=process.env.SMTP_SECURE?process.env.SMTP_SECURE==="true":true;
+    const user=process.env.EMAIL_USER;
+    const pass=process.env.EMAIL_PASS;
+    const to=process.env.TO_EMAIL||"narenskii@gmail.com";
+    if(!user||!pass) return res.status(500).json({ok:false,message:"Konfigurasi email belum lengkap (EMAIL_USER/EMAIL_PASS)."});
+    const transporter=nodemailer.createTransport({host,port,secure,auth:{user,pass}});
+    await transporter.sendMail({
+      from:`"PPDB Website" <${user}>`, to, replyTo: email,
+      subject:`PPDB: ${nama} mendaftar (${jurusan})`,
+      html:`<h2>Form PPDB Baru</h2>
+      <p><b>Nama:</b> ${nama}</p><p><b>Email:</b> ${email}</p><p><b>Telp/WA:</b> ${telp||"-"}</p>
+      <p><b>Jurusan:</b> ${jurusan}</p><p><b>Pesan:</b><br>${(pesan||"").replace(/\n/g,"<br>")}</p>
+      <hr><p>Pesan ini dikirim otomatis dari website SMK Perintis 1 Depok.</p>`,
+      text:`Nama: ${nama}\nEmail: ${email}\nTelp/WA: ${telp||"-"}\nJurusan: ${jurusan}\nPesan:\n${pesan||""}`
     });
-    return res.status(200).json({ ok:true, message:"Pendaftaran berhasil dikirim.", id: info.messageId });
-  } catch(e) { return res.status(500).json({ ok:false, message:"Gagal mengirim email." }); }
+    return res.status(200).json({ok:true,message:"Terima kasih! Data PPDB berhasil terkirim."});
+  }catch(err){
+    console.error("Email error:",err);
+    return res.status(500).json({ok:false,message:"Maaf, pengiriman email gagal. Coba beberapa saat lagi."});
+  }
 }
