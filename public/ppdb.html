@@ -1,60 +1,38 @@
-<!DOCTYPE html>
-
-<html lang="id">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PPDB — SMK Perintis 1 Depok</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','ui-sans-serif','system-ui']},colors:{primary:'#1E3A8A'}}}}</script>
-</head>
-<body class="bg-slate-50 text-slate-800">
-<header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-<a class="font-extrabold" href="/index.html">SMK Perintis 1 Depok</a>
-<nav class="hidden md:flex gap-6 text-sm">
-
-
-
-
-
-<a class="hover:text-primary" href="/ppdb.html">PPDB</a><a class="hover:text-primary" href="/berita.html">Berita</a><a class="hover:text-primary" href="/agenda.html">Agenda</a><a class="hover:text-primary" href="/galeri.html">Galeri</a><a class="hover:text-primary" href="/admin.html">Admin</a></nav>
-</div>
-</header>
-<section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-<h1 class="text-3xl md:text-4xl font-extrabold">Formulir PPDB</h1>
-<p class="mt-2 text-slate-600">Isi data dengan benar. Anda dapat menambahkan berkas pendukung (rapor/sertifikat) PDF/JPG/PNG maksimum 3 file.</p>
-<form class="mt-6 rounded-2xl border bg-white p-6 shadow-sm space-y-4" id="ppdbFilesForm">
-<div class="grid md:grid-cols-2 gap-4">
-<input class="rounded-xl border px-3 py-2" name="namaLengkap" placeholder="Nama Lengkap" required=""/>
-<input class="rounded-xl border px-3 py-2" name="nisn" placeholder="NISN" required=""/>
-<input class="rounded-xl border px-3 py-2" name="email" placeholder="Email" required="" type="email"/>
-<input class="rounded-xl border px-3 py-2" name="telepon" placeholder="+62 812xxxxxxx" required="" type="tel"/>
-</div>
-<input class="w-full rounded-xl border px-3 py-2" name="alamat" placeholder="Alamat" required=""/>
-<input class="w-full rounded-xl border px-3 py-2" name="asalSekolah" placeholder="Asal Sekolah" required=""/>
-<select class="w-full rounded-xl border px-3 py-2" name="jurusan" required="">
-<option value="">— pilih jurusan —</option>
-<option>Bisnis Daring dan Pemasaran</option>
-<option>Otomatisasi dan Tata Kelola Perkantoran</option>
-<option>Akuntansi dan Keuangan Lembaga</option>
-</select>
-<textarea class="w-full rounded-xl border px-3 py-2" name="pesan" placeholder="Pesan/Motivasi" rows="4"></textarea>
-<input accept=".pdf,image/jpeg,image/png" class="w-full rounded-xl border px-3 py-2" multiple="" name="berkas" type="file"/>
-<div class="hidden text-sm rounded-xl border p-3" id="alert"></div>
-<div class="flex gap-3">
-<button class="rounded-xl bg-primary px-5 py-3 text-white font-semibold" type="submit">Kirim Pendaftaran</button>
-<a class="rounded-xl border px-5 py-3 font-semibold" href="/index.html#ppdb">Kembali</a>
-</div>
+</head><body class="font-sans text-slate-900 bg-white">
+<main class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+<h1 class="text-3xl font-bold">Form PPDB</h1>
+<p class="text-slate-600 mt-2">Isi data di bawah untuk mengirimkan pendaftaran ke panitia.</p>
+<div class="mt-8 grid md:grid-cols-2 gap-8">
+<form id="ppdbForm" class="grid gap-4">
+  <div class="grid gap-2"><label class="text-sm font-medium">Nama Lengkap*</label><input name="nama" required class="rounded-xl border px-4 py-2"></div>
+  <div class="grid gap-2"><label class="text-sm font-medium">Email*</label><input type="email" name="email" required class="rounded-xl border px-4 py-2"></div>
+  <div class="grid gap-2"><label class="text-sm font-medium">Nomor WA/Telp</label><input name="telp" class="rounded-xl border px-4 py-2"></div>
+  <div class="grid gap-2"><label class="text-sm font-medium">Jurusan*</label>
+    <select name="jurusan" required class="rounded-xl border px-4 py-2">
+      <option value="">— pilih jurusan —</option>
+      <option value="BDP">Bisnis Daring & Pemasaran (BDP)</option>
+      <option value="OTKP">Otomatisasi & Tata Kelola Perkantoran (OTKP)</option>
+      <option value="AKL">Akuntansi & Keuangan Lembaga (AKL)</option>
+    </select>
+  </div>
+  <div class="grid gap-2"><label class="text-sm font-medium">Pesan</label><textarea name="pesan" rows="4" class="rounded-xl border px-4 py-2"></textarea></div>
+  <div class="flex items-center gap-3"><button id="btnSubmit" class="rounded-xl bg-blue-600 text-white px-5 py-2.5 font-semibold" type="submit">Kirim Pendaftaran</button><span id="statusMsg" class="text-sm"></span></div>
 </form>
-</section>
+<aside class="rounded-2xl border bg-white p-6 shadow-sm">
+  <div class="text-sm text-slate-500 mb-2">Kontak Panitia</div>
+  <ul class="space-y-2 text-sm"><li><b>Email:</b> narenskii@gmail.com</li><li><b>API:</b> <a class="text-blue-600 underline" href="/api/health" target="_blank">/api/health</a></li></ul>
+</aside>
+</div></main>
 <script>
-const form=document.getElementById('ppdbFilesForm');const alertBox=document.getElementById('alert');
-function showAlert(msg,ok=true){alertBox.classList.remove('hidden');alertBox.classList.toggle('bg-green-50',ok);alertBox.classList.toggle('border-green-200',ok);alertBox.classList.toggle('text-green-700',ok);alertBox.classList.toggle('bg-red-50',!ok);alertBox.classList.toggle('border-red-200',!ok);alertBox.classList.toggle('text-red-700',!ok);alertBox.textContent=msg;}
-form.addEventListener('submit',async(e)=>{e.preventDefault();const fd=new FormData(form);const tel=String(fd.get('telepon')||'');if(!/^\+?\d{9,15}$/.test(tel)){showAlert('Nomor telepon/WA tidak valid',false);return;}try{const res=await fetch('/api/ppdb-with-files',{method:'POST',body:fd});const data=await res.json();if(!res.ok)throw new Error(data?.message||'Gagal mengirim.');showAlert('Pendaftaran + berkas terkirim.');form.reset();}catch(err){showAlert(err.message,false);}});
-</script>
-</body>
-</html>
+(function(){const form=document.getElementById("ppdbForm");const btn=document.getElementById("btnSubmit");const statusMsg=document.getElementById("statusMsg");
+form.addEventListener("submit",async(e)=>{e.preventDefault();statusMsg.textContent="";statusMsg.className="text-sm";btn.disabled=true;btn.textContent="Mengirim...";
+const data={nama:form.nama.value.trim(),email:form.email.value.trim(),telp:form.telp.value.trim(),jurusan:form.jurusan.value,pesan:form.pesan.value.trim()};
+try{const res=await fetch("/api/send",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});const txt=await res.text();let json;try{json=JSON.parse(txt);}catch(_){throw new Error("Server tidak mengembalikan JSON. Response: "+txt.slice(0,100)+"...");}
+if(res.ok&&json.ok){statusMsg.className="text-sm text-green-600";statusMsg.textContent=json.message||"Berhasil dikirim";form.reset();}
+else{statusMsg.className="text-sm text-red-600";statusMsg.textContent=json.message||"Gagal mengirim";}}
+catch(err){statusMsg.className="text-sm text-red-600";statusMsg.textContent=err.message||"Terjadi kesalahan";}
+finally{btn.disabled=false;btn.textContent="Kirim Pendaftaran";}});})();</script>
+</body></html>
