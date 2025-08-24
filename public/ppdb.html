@@ -14,41 +14,37 @@
         extend: {
           fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
           colors: { brand: { DEFAULT:'#0ea5e9', dark:'#0369a1' } },
-          keyframes: {
-            pop: { '0%':{ transform:'scale(.96)' }, '100%':{ transform:'scale(1)' } },
-            pulseRing: { '0%':{ transform:'scale(1)', opacity:.5 }, '100%':{ transform:'scale(1.6)', opacity:0 } }
-          },
-          animation: { pop:'pop .18s ease-out', ring:'pulseRing 1.6s ease-out infinite' },
-          boxShadow: { soft:'0 8px 24px rgba(2,132,199,.15)' }
+          boxShadow: { soft:'0 8px 24px rgba(2,132,199,.12)' }
         }
       }
     }
   </script>
   <style>
     @media (prefers-reduced-motion: reduce){
-      *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+      *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
     }
   </style>
 </head>
 <body class="font-sans text-slate-900 bg-white antialiased">
-  <!-- Header minimal -->
-  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
-    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-14 md:h-16 flex items-center">
-      <a href="/index.html#home" class="text-sm md:text-base font-semibold">SMK Perintis 1 Depok</a>
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-12 md:h-16 flex items-center">
+      <a href="/" class="text-sm md:text-base font-semibold">SMK Perintis 1 Depok</a>
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero (ringkas di HP) -->
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-700"></div>
-    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
-      <div class="max-w-[720px]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 md:py-14">
+      <div class="max-w-[680px]">
         <p class="uppercase tracking-wider text-white/90 text-[11px] md:text-xs font-semibold">PPDB SMK PERINTIS 1 DEPOK</p>
-        <h1 class="mt-2 font-extrabold leading-tight text-white" style="font-size:clamp(1.6rem,2.6vw + 1rem,3rem);">
+        <h1 class="mt-1 font-extrabold leading-tight text-white"
+            style="font-size:clamp(1.35rem,2.2vw + .9rem,2.6rem);">
           Daftar PPDB Secara Online
         </h1>
-        <p class="mt-2 md:mt-3 text-white/90 text-sm md:text-base">
-          Isi data singkat berikut. Setelah terkirim, tim kami akan menindaklanjuti melalui email dan WhatsApp.
+        <p class="mt-2 text-white/95 text-[13px] sm:text-sm md:text-base">
+          Isi data singkat di bawah. Setelah terkirim, tim kami menindaklanjuti via email & WhatsApp.
         </p>
       </div>
     </div>
@@ -56,9 +52,10 @@
 
   <!-- Main -->
   <main>
-    <section class="py-6 sm:py-8 md:py-12">
-      <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 grid gap-6 lg:grid-cols-3">
-        <!-- Form -->
+    <section class="py-5 sm:py-7 md:py-10">
+      <!-- container max 1200, padding adaptif -->
+      <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 grid gap-5 md:gap-6 lg:grid-cols-3">
+        <!-- FORM: full width di HP; 2 kolom baru di ≥lg -->
         <div class="lg:col-span-2">
           <div class="rounded-2xl border bg-white shadow-soft">
             <div class="p-4 sm:p-5 md:p-6 border-b bg-slate-50 rounded-t-2xl">
@@ -67,30 +64,30 @@
                 <li class="inline-flex items-center gap-2"><span class="h-5 w-5 sm:h-6 sm:w-6 grid place-items-center rounded-full bg-slate-200 text-slate-700 text-[10px] sm:text-[11px] font-bold">2</span> Verifikasi</li>
                 <li class="inline-flex items-center gap-2"><span class="h-5 w-5 sm:h-6 sm:w-6 grid place-items-center rounded-full bg-slate-200 text-slate-700 text-[10px] sm:text-[11px] font-bold">3</span> Dihubungi</li>
               </ol>
-              <h2 class="text-lg sm:text-xl md:text-2xl font-bold mt-3">Form Pendaftaran Peserta Didik Baru</h2>
-              <p class="text-xs sm:text-sm text-slate-600 mt-1">Gunakan email & nomor WhatsApp aktif agar kami mudah menghubungi.</p>
+              <h2 class="text-base sm:text-lg md:text-xl font-bold mt-3">Form Pendaftaran Peserta Didik Baru</h2>
+              <p class="text-[12px] sm:text-sm text-slate-600 mt-1">Gunakan email & nomor WhatsApp yang aktif.</p>
             </div>
 
             <form id="ppdbForm" class="p-4 sm:p-5 md:p-6 grid gap-4 sm:gap-5">
               <div class="grid gap-1.5">
                 <label class="text-sm font-medium">Nama Lengkap <span class="text-red-600">*</span></label>
-                <input name="nama" type="text" required class="h-11 rounded-xl border px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                <input name="nama" type="text" required class="h-11 w-full rounded-xl border px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-sky-500">
               </div>
 
-              <div class="grid gap-4 md:grid-cols-2">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="grid gap-1.5">
                   <label class="text-sm font-medium">Email <span class="text-red-600">*</span></label>
-                  <input name="email" type="email" required class="h-11 rounded-xl border px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                  <input name="email" type="email" required class="h-11 w-full rounded-xl border px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-sky-500">
                 </div>
                 <div class="grid gap-1.5">
                   <label class="text-sm font-medium">Nomor WhatsApp</label>
-                  <input name="telp" type="tel" placeholder="+62…" class="h-11 rounded-xl border px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                  <input name="telp" type="tel" inputmode="tel" placeholder="+62…" class="h-11 w-full rounded-xl border px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-sky-500">
                 </div>
               </div>
 
               <div class="grid gap-1.5">
                 <label class="text-sm font-medium">Jurusan Pilihan <span class="text-red-600">*</span></label>
-                <select name="jurusan" required class="h-11 rounded-xl border px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                <select name="jurusan" required class="h-11 w-full rounded-xl border px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-sky-500">
                   <option value="">— pilih jurusan —</option>
                   <option value="BDP">Bisnis Daring & Pemasaran (BDP)</option>
                   <option value="OTKP">Otomatisasi & Tata Kelola Perkantoran (OTKP)</option>
@@ -100,15 +97,16 @@
 
               <div class="grid gap-1.5">
                 <label class="text-sm font-medium">Pesan Tambahan</label>
-                <textarea name="pesan" rows="4" class="rounded-xl border px-3 sm:px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500" placeholder="Contoh: Saya ingin konsultasi biaya & jadwal…"></textarea>
+                <textarea name="pesan" rows="4" class="rounded-2xl border px-3 sm:px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500" placeholder="Contoh: Ingin konsultasi biaya & jadwal…"></textarea>
               </div>
 
               <div class="flex flex-wrap items-center gap-3 sm:gap-4">
-                <button type="submit" id="btnSubmit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white px-4 sm:px-5 py-2.5 font-semibold shadow transition-transform active:scale-95">
+                <button type="submit" id="btnSubmit"
+                        class="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white px-4 sm:px-5 py-2.5 font-semibold shadow transition-transform active:scale-95">
                   <span>Kirim Pendaftaran</span>
                   <svg class="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                 </button>
-                <span id="statusMsg" class="text-xs sm:text-sm"></span>
+                <span id="statusMsg" class="text-[12px] sm:text-sm"></span>
               </div>
 
               <p class="mt-1 text-[11px] sm:text-xs text-slate-500">Dengan mengirimkan formulir ini, Anda menyetujui dihubungi via email/WhatsApp untuk informasi PPDB.</p>
@@ -116,9 +114,9 @@
           </div>
         </div>
 
-        <!-- Info kecil -->
-        <aside class="space-y-4">
-          <div class="rounded-2xl border p-4 sm:p-5 md:p-6 bg-slate-50">
+        <!-- Sidebar: sembunyikan di HP, tampil mulai md -->
+        <aside class="hidden md:block">
+          <div class="rounded-2xl border p-5 md:p-6 bg-slate-50">
             <div class="text-sm text-slate-600">Informasi</div>
             <ul class="mt-3 space-y-2 text-sm text-slate-700 list-disc pl-5">
               <li>Isi data sesuai identitas.</li>
@@ -138,34 +136,30 @@
     </div>
   </footer>
 
-  <!-- WA FAB tunggal -->
-  <a
-    data-wa-fab
-    href="https://wa.me/6281282460257?text=Halo%20Admin%20PPDB%20SMK%20Perintis%201%20Depok%2C%20saya%20sudah%20mengisi%20formulir.%20Mohon%20informasi%20lanjutan%20ya."
-    target="_blank" rel="noopener noreferrer" aria-label="WhatsApp PPDB"
-    class="fixed right-4 bottom-5 sm:bottom-6 z-50 h-14 w-14 grid place-items-center rounded-full bg-green-500 shadow-lg hover:shadow-xl transition active:scale-95"
-  >
-    <span class="absolute inset-0 rounded-full bg-green-500/40 -z-10 animate-ring"></span>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-7 w-7 fill-white pointer-events-none" aria-hidden="true">
+  <!-- WhatsApp FAB (tunggal) -->
+  <a data-wa-fab
+     href="https://wa.me/6281282460257?text=Halo%20Admin%20PPDB%20SMK%20Perintis%201%20Depok%2C%20saya%20sudah%20mengisi%20formulir.%20Mohon%20informasi%20lanjutan%20ya."
+     target="_blank" rel="noopener noreferrer" aria-label="WhatsApp PPDB"
+     class="fixed right-4 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-50 h-12 w-12 sm:h-14 sm:w-14 grid place-items-center rounded-full bg-green-500 shadow-lg hover:shadow-xl transition active:scale-95">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-6 w-6 sm:h-7 sm:w-7 fill-white pointer-events-none" aria-hidden="true">
       <path d="M380.9 97.1C339 55.2 283.9 32 224.1 32 106.1 32 8 119.5 8 227.6c0 37.7 10.4 73.1 28.5 103.4L0 480l152.6-35.9c28 15.4 60.2 24.1 94.3 24.1 118 0 216.1-87.5 216.1-195.6 0-52.3-22.9-100-62.1-135.5zM224.1 418.2c-30 0-59.1-7.9-84.8-22.8l-5.9-3.5-90.4 21.3 19.3-88.1-3.9-6.1c-17.3-27.2-26.4-58.6-26.4-91.4 0-89.3 79.6-161.9 177.1-161.9 47.4 0 91.9 17.5 125.6 49.4 33.5 31.9 51.9 74.4 51.9 120.6 0 89.3-79.6 161.7-181 161.7zm100.7-121.9c-5.5-2.7-32.5-15.9-37.6-17.7-5.1-1.9-8.8-2.7-12.5 2.7-3.6 5.4-14.3 17.7-17.5 21.3-3.2 3.6-6.4 4.1-12 1.4-5.5-2.7-23.2-8.5-44.4-27.1-16.4-14.2-27.4-31.8-30.7-37.2-3.2-5.4-.3-8.2 2.4-11 2.5-2.6 5.5-6 8.3-9.1 2.7-3 3.6-5 5.5-8.2 1.8-3.4 .9-6.2-.5-8.7-1.5-2.7-12.5-30.2-17.1-41.5-4.5-10.9-9.1-9.5-12.5-9.7l-10.7-.2c-3.2 0-8.3 1.2-12.8 6.2-4.4 4.9-16.7 16.3-16.7 39.7s17.1 46 19.5 49.2c2.4 3.3 33.6 51.4 81.3 72.1 11.3 4.9 20.2 7.9 27.2 9.1 11.4 3.1 21.8 1.5 30-9.2 8.7-10.6 14.3-20 16.3-27.6 3.8-7.6 2.1-12.3-3.4-15z"/>
     </svg>
   </a>
 
   <script>
-    // Tanggal footer
+    // Tahun footer
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Submit handler (tetap sama seperti versi sebelumnya)
+    // Submit handler (tetap JSON; aman jika API error)
     (function(){
       const form = document.getElementById("ppdbForm");
-      const btn = document.getElementById("btnSubmit");
-      const statusMsg = document.getElementById("statusMsg");
+      const btn  = document.getElementById("btnSubmit");
+      const msg  = document.getElementById("statusMsg");
 
-      form.addEventListener("submit", async (e) => {
+      form.addEventListener("submit", async (e)=>{
         e.preventDefault();
-        statusMsg.textContent=""; statusMsg.className="text-xs sm:text-sm";
-        btn.disabled = true; btn.classList.add('animate-pop');
-        btn.querySelector("span").textContent = "Mengirim...";
+        msg.textContent=""; msg.className="text-[12px] sm:text-sm";
+        btn.disabled=true; btn.querySelector("span").textContent="Mengirim...";
 
         const data = {
           nama: form.nama.value.trim(),
@@ -176,29 +170,23 @@
         };
 
         try{
-          const res = await fetch("/api/send", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(data) });
-          const text = await res.text();
-          let json; try{ json = JSON.parse(text); }catch(_){ throw new Error("Server tidak mengembalikan JSON"); }
-          if(res.ok && json.ok){
-            statusMsg.className="text-xs sm:text-sm text-green-600"; statusMsg.textContent=json.message||"Berhasil dikirim."; form.reset();
-          } else {
-            statusMsg.className="text-xs sm:text-sm text-red-600"; statusMsg.textContent=json.message||"Gagal mengirim.";
-          }
+          const res  = await fetch("/api/send",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
+          const text = await res.text(); let json;
+          try{ json = JSON.parse(text); }catch(_){ throw new Error("Server tidak mengembalikan JSON"); }
+          if(res.ok && json.ok){ msg.className="text-[12px] sm:text-sm text-green-600"; msg.textContent=json.message||"Berhasil dikirim."; form.reset(); }
+          else{ msg.className="text-[12px] sm:text-sm text-red-600"; msg.textContent=json.message||"Gagal mengirim."; }
         }catch(err){
-          statusMsg.className="text-xs sm:text-sm text-red-600"; statusMsg.textContent=err.message||"Terjadi kesalahan jaringan.";
+          msg.className="text-[12px] sm:text-sm text-red-600"; msg.textContent=err.message||"Terjadi kesalahan jaringan.";
         }finally{
           btn.disabled=false; btn.querySelector("span").textContent="Kirim Pendaftaran";
         }
       });
     })();
 
-    // --- Hapus semua WA FAB lama (jaga-jaga ada sisa dari tema lama) ---
+    // Pastikan FAB WhatsApp hanya satu (hapus sisa dari tema lama, jika ada)
     (function(){
       const fabs = document.querySelectorAll('[data-wa-fab]');
-      if (fabs.length > 1) {
-        fabs.forEach((el,i) => { if(i>0) el.remove(); });
-      }
-      // juga hapus anchor wa.me lain di halaman
+      fabs.forEach((el, i) => { if(i>0) el.remove(); });
       document.querySelectorAll('a[href*="wa.me"]').forEach(a=>{
         if(!a.hasAttribute('data-wa-fab')) a.remove();
       });
