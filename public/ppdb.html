@@ -1,31 +1,80 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>PPDB — SMK Perintis 1 Depok</title>
 <script src="https://cdn.tailwindcss.com"></script>
 </head><body class="font-sans text-slate-900 bg-white">
 <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-<h1 class="text-3xl font-bold">Form PPDB</h1>
-<p class="text-slate-600 mt-2">Isi data di bawah untuk mengirimkan pendaftaran ke panitia.</p>
-<div class="mt-8 grid md:grid-cols-2 gap-8">
-<form id="ppdbForm" class="grid gap-4">
-  <div class="grid gap-2"><label class="text-sm font-medium">Nama Lengkap*</label><input name="nama" required class="rounded-xl border px-4 py-2"></div>
-  <div class="grid gap-2"><label class="text-sm font-medium">Email*</label><input type="email" name="email" required class="rounded-xl border px-4 py-2"></div>
-  <div class="grid gap-2"><label class="text-sm font-medium">Nomor WA/Telp</label><input name="telp" class="rounded-xl border px-4 py-2"></div>
-  <div class="grid gap-2"><label class="text-sm font-medium">Jurusan*</label>
-    <select name="jurusan" required class="rounded-xl border px-4 py-2">
-      <option value="">— pilih jurusan —</option>
-      <option value="BDP">Bisnis Daring & Pemasaran (BDP)</option>
-      <option value="OTKP">Otomatisasi & Tata Kelola Perkantoran (OTKP)</option>
-      <option value="AKL">Akuntansi & Keuangan Lembaga (AKL)</option>
-    </select>
-  </div>
-  <div class="grid gap-2"><label class="text-sm font-medium">Pesan</label><textarea name="pesan" rows="4" class="rounded-xl border px-4 py-2"></textarea></div>
-  <div class="flex items-center gap-3"><button id="btnSubmit" class="rounded-xl bg-blue-600 text-white px-5 py-2.5 font-semibold" type="submit">Kirim Pendaftaran</button><span id="statusMsg" class="text-sm"></span></div>
+<section class="relative py-14 md:py-20 text-white overflow-hidden">
+<div class="absolute inset-0 -z-10 bg-gradient-to-r from-primary to-blue-600"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<p class="uppercase tracking-wider text-white/80 text-xs font-semibold">PPDB SMK PERINTIS 1 DEPOK</p>
+<h1 class="text-3xl md:text-5xl font-extrabold leading-tight mt-2">Daftar PPDB Secara Online</h1>
+<p class="mt-3 text-white/90 max-w-3xl">Isi data singkat berikut. Setelah terkirim, tim kami akan menindaklanjuti melalui email dan WhatsApp.</p>
+</div>
+</section>
+
+<section class="py-10 md:py-14 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-10 items-start">
+<div class="lg:col-span-2">
+<div class="rounded-2xl border bg-white shadow-sm">
+<div class="p-6 border-b bg-slate-50 rounded-t-2xl">
+<ol class="flex items-center gap-3 text-xs text-slate-600">
+<li class="inline-flex items-center gap-2"><span class="h-6 w-6 grid place-items-center rounded-full bg-blue-600 text-white text-[11px] font-bold">1</span> Isi Data</li>
+<li class="inline-flex items-center gap-2"><span class="h-6 w-6 grid place-items-center rounded-full bg-slate-200 text-slate-700 text-[11px] font-bold">2</span> Verifikasi</li>
+<li class="inline-flex items-center gap-2"><span class="h-6 w-6 grid place-items-center rounded-full bg-slate-200 text-slate-700 text-[11px] font-bold">3</span> Dihubungi</li>
+</ol>
+<h2 class="text-xl md:text-2xl font-bold mt-3">Form Pendaftaran Peserta Didik Baru</h2>
+<p class="text-sm text-slate-600 mt-1">Gunakan email &amp; nomor WhatsApp aktif agar kami mudah menghubungi.</p>
+</div>
+<form class="p-6 grid gap-5" id="ppdbForm">
+<div class="grid gap-2">
+<label class="text-sm font-medium">Nama Lengkap <span class="text-red-600">*</span></label>
+<input class="rounded-xl border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary" name="nama" required="" type="text"/>
+</div>
+<div class="grid sm:grid-cols-2 gap-4">
+<div class="grid gap-2">
+<label class="text-sm font-medium">Email <span class="text-red-600">*</span></label>
+<input class="rounded-xl border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary" name="email" required="" type="email"/>
+</div>
+<div class="grid gap-2">
+<label class="text-sm font-medium">Nomor WhatsApp</label>
+<input class="rounded-xl border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary" name="telp" placeholder="+62…" type="tel"/>
+</div>
+</div>
+<div class="grid gap-2">
+<label class="text-sm font-medium">Jurusan Pilihan <span class="text-red-600">*</span></label>
+<select class="rounded-xl border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary" name="jurusan" required="">
+<option value="">— pilih jurusan —</option>
+<option value="BDP">Bisnis Daring &amp; Pemasaran (BDP)</option>
+<option value="OTKP">Otomatisasi &amp; Tata Kelola Perkantoran (OTKP)</option>
+<option value="AKL">Akuntansi &amp; Keuangan Lembaga (AKL)</option>
+</select>
+</div>
+<div class="grid gap-2">
+<label class="text-sm font-medium">Pesan Tambahan</label>
+<textarea class="rounded-xl border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary" name="pesan" placeholder="Contoh: Saya ingin konsultasi biaya &amp; jadwal…" rows="4"></textarea>
+</div>
+<div class="flex flex-wrap items-center gap-4">
+<button class="rounded-xl bg-blue-600 text-white px-5 py-2.5 font-semibold shadow active:scale-95" id="btnSubmit" type="submit">Kirim Pendaftaran</button>
+<span class="text-sm" id="statusMsg"></span>
+</div>
+<div class="mt-2 text-xs text-slate-500">Dengan mengirimkan formulir ini, Anda menyetujui dihubungi melalui email/WhatsApp untuk informasi PPDB.</div>
 </form>
-<aside class="rounded-2xl border bg-white p-6 shadow-sm">
-  <div class="text-sm text-slate-500 mb-2">Kontak Panitia</div>
-  <ul class="space-y-2 text-sm"><li><b>Email:</b> narenskii@gmail.com</li><li><b>API:</b> <a class="text-blue-600 underline" href="/api/health" target="_blank">/api/health</a></li></ul>
+</div>
+</div>
+<aside class="space-y-4">
+<div class="rounded-2xl border p-6 bg-slate-50">
+<div class="text-sm text-slate-600">Informasi</div>
+<ul class="mt-3 space-y-2 text-sm text-slate-700 list-disc pl-5">
+<li>Isi data sesuai identitas.</li>
+<li>Gunakan email &amp; WhatsApp aktif.</li>
+<li>Tim PPDB akan menghubungi setelah verifikasi.</li>
+</ul>
+</div>
 </aside>
-</div></main>
+</div>
+</section>
+</main>
 <script>
 (function(){const form=document.getElementById("ppdbForm");const btn=document.getElementById("btnSubmit");const statusMsg=document.getElementById("statusMsg");
 form.addEventListener("submit",async(e)=>{e.preventDefault();statusMsg.textContent="";statusMsg.className="text-sm";btn.disabled=true;btn.textContent="Mengirim...";
@@ -35,4 +84,10 @@ if(res.ok&&json.ok){statusMsg.className="text-sm text-green-600";statusMsg.textC
 else{statusMsg.className="text-sm text-red-600";statusMsg.textContent=json.message||"Gagal mengirim";}}
 catch(err){statusMsg.className="text-sm text-red-600";statusMsg.textContent=err.message||"Terjadi kesalahan";}
 finally{btn.disabled=false;btn.textContent="Kirim Pendaftaran";}});})();</script>
+
+<a aria-label="Hubungi PPDB via WhatsApp" class="fixed right-4 bottom-4 z-50 h-12 w-12 grid place-items-center rounded-full shadow-lg bg-green-500 hover:scale-105 active:scale-95 transition" href="https://wa.me/6281282460257?text=Halo%20Admin%20PPDB%20SMK%20Perintis%201%20Depok%2C%20saya%20sudah%20mengisi%20formulir%20PPDB%20di%20website.%20Mohon%20informasi%20lanjutan%20ya." rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" class="h-6 w-6 fill-white" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+<path d="M380.9 97.1C339-...-snip-..."></path>
+</svg>
+</a>
 </body></html>
