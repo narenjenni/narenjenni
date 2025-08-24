@@ -38,7 +38,7 @@
 <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-slate-200">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex h-16 items-center justify-between">
-<a class="flex items-center gap-3 group" href="/index.html#home"><img alt="Logo SMK Perintis 1 Depok" class="shadow h-10 ring-2 object-contain ring-white/70 w-10 mr-2 rounded-full" onerror="this.onerror=null; this.src='./assets/logo/logo-smk-perintis.png';" src="/assets/logo/logo-smk-perintis.png"/>
+<a class="flex items-center gap-3 group" href="/index.html#home"><img alt="Logo SMK Perintis 1 Depok" class="shadow h-10 ring-2 ring-white/70 object-contain w-10 mr-2 rounded-full" data-step="1" onerror="this.onerror=null; if(this.dataset.step==='1'){this.dataset.step='2';this.src='./assets/logo/logo-smk-perintis.png';}else if(this.dataset.step==='2'){this.dataset.step='3';this.src='/assets/logo-smk-perintis.png';}else if(this.dataset.step==='3'){this.dataset.step='4';this.src='/logo.png';}" src="/assets/logo/logo-smk-perintis.png"/>
 <div class="leading-tight"><div class="font-bold">SMK Perintis 1 Depok</div><div class="text-xs text-slate-500">Sekolah Vokasi Modern</div></div>
 </a>
 <nav class="hidden lg:flex items-center gap-6 text-[15px] font-medium">
